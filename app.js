@@ -16,7 +16,6 @@ const broadcast = require("./routes/broadcast");
 const webviews = require("./routes/webviews");
 
 const userService = require("./services/user-service");
-const colors = require("./colors");
 const weatherService = require("./services/weather-service");
 const jobApplicationService = require("./services/job-application-service");
 const preProgramService = require("./services/pre-program-service");

@@ -1,3 +1,4 @@
+const config = require("../config");
 module.exports = function CheckCredentials() {
   // Messenger API parameters
   if (!config.FB_PAGE_TOKEN) {
