@@ -379,7 +379,7 @@ function handleDialogFlowAction(
               payload: "RETAKE"
             }
           ];
-          fbService.sendQuickReply(sender, responseText, replies);
+          fbService.sendQuickReply(sender, replies);
         }
       }
 
