@@ -374,12 +374,12 @@ function handleDialogFlowAction(
           fbService.sendTextMessage(sender, "I am sorry you did not finish the survey. You will have to start over again. Make sure you take the survey carefully for a succeful submission. When you are ready retake the survey using the button below")
           let replies = [
             {
-                "content_type": "text",
-                "title": "Retake",
-                "payload": "RETAKE"
+              content_type: "text",
+              title: "RETAKE SURVEY",
+              payload: "RETAKE"
             }
           ];
-          fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+          fbService.sendQuickReply(sender, responseText, replies);
         }
       }
 
