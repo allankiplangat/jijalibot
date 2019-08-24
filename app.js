@@ -371,13 +371,11 @@ function handleDialogFlowAction(
         if (finished == 'yes'){
           fbService.sendTextMessage(sender, "Thank you!!. Kindly wait for the next steps you will be informed later")
         } else if (finished == 'no'){
-          fbService.sendTextMessage(sender, "I am sorry you did not finish the survey. You will have to start over again")
-          fbService.sendTextMessage(sender, "Make sure you take the survey carefully for a succeful submission")
-          fbService.sendTextMessage(sender, "When you are ready retake the survey using the button below")
+          fbService.sendTextMessage(sender, "I am sorry you did not finish the survey. You will have to start over again. Make sure you take the survey carefully for a succeful submission. When you are ready retake the survey using the button below")
           let replies = [
             {
                 "content_type": "text",
-                "title": "yes",
+                "title": "Retake",
                 "payload": "RETAKE"
             }
           ];
