@@ -370,16 +370,17 @@ function handleDialogFlowAction(
               && contexts[0].parameters.fields['finished_survey'] != '') ? contexts[0].parameters.fields['finished_survey'].stringValue : '';
         if (finished == 'yes'){
           fbService.sendTextMessage(sender, "Thank you!!. Kindly wait for the next steps you will be informed later")
-        } else if (finished == 'no'){
-          fbService.sendTextMessage(sender, "I am sorry you did not finish the survey. You will have to start over again. Make sure you take the survey carefully for a succeful submission. When you are ready retake the survey using the button below")
+        } else if(finished == 'no'){
+          let responseText = "I am sorry you did not finish the survey. You will have to start over again. Make sure you take the survey carefully for a succeful submission. When you are ready retake the survey using the button below";
+
           let replies = [
             {
               content_type: "text",
-              title: "RETAKE SURVEY",
+              title: "Retake the survey",
               payload: "RETAKE"
             }
           ];
-          fbService.sendQuickReply(sender, replies);
+          fbService.sendQuickReply(sender, responseText, replies);
         }
       }
 
