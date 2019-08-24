@@ -904,7 +904,7 @@ function handleDialogFlowAction(
               fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
           }
           else if (identity == '') {
-              fbService.sendTextMessage(sender, "Enter your National ID Number");
+              fbService.sendTextMessage(sender, "Enter your Jijali ID");
           } 
 
       } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('survey')){
