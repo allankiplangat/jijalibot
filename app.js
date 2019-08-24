@@ -985,6 +985,28 @@ function handleDialogFlowAction(
       } 
       
       break;
+    
+    case "input.unknown":
+      fbService.handleMessages(messages, sender);
+      
+      fbService.sendTypingOn(sender);
+
+      //ask what user wants to do next
+      setTimeout(function() {
+          let responseText = "Hi I am sorry, you did not finish your conversation or you have entered something i cant recognize at the moment you can startover again or if urgnent i will link you with Jijali helper";
+
+          let replies = [
+              {
+                  "content_type": "text",
+                  "title": "Jijali Helper",
+                  "payload": "LIVE_AGENT"
+              }
+          ];
+
+          fbService.sendQuickReply(sender, responseText, replies);
+      }, 2000);
+
+      break;
 
     default:
       //unhandled action, just send back the text
