@@ -271,6 +271,14 @@ function handleQuickReply(senderID, quickReply, messageId) {
         "Take the survey"
       );
       break;
+    case "TOOK_YES":
+      dialogflowService.sendTextQueryToDialogFlow(
+        sessionIds,
+        handleDialogFlowResponse,
+        senderID,
+        "I took the survey"
+      );
+      break;
 
     case "GET_HELP":
       dialogflowService.sendTextQueryToDialogFlow(
