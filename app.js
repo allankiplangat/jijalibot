@@ -533,25 +533,29 @@ function handleDialogFlowAction(
 
               let replies = [
                   {
-                      "content_type": "text",
-                      "title": "Not at all",
-                      "payload": "Not at all"
+                    "content_type": "text",
+                    "title": "Not at all",
+                    "payload": "Not at all"
                   },
-                  {
-                      "content_type": "text",
-                      "title": "Quite a bit",
-                      "payload": "Quite a bit"
-                  },
-                  {
-                      "content_type": "text",
-                      "title": "Very Familiar",
-                      "payload": "Very Familiar"
-                  },
+                  
                   {
                       "content_type": "text",
                       "title": "Very Little",
                       "payload": "Very Little"
                   },
+
+                  {
+                    "content_type": "text",
+                    "title": "Quite a bit",
+                    "payload": "Quite a bit"
+                  },
+
+                  {
+                      "content_type": "text",
+                      "title": "Very Familiar",
+                      "payload": "Very Familiar"
+                  },
+                  
               ];
               fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
           } else if (learningpreference == '') {
@@ -996,10 +1000,16 @@ function handleDialogFlowAction(
           let responseText = "Hi I am sorry, you did not finish your conversation or you have entered something i cant recognize at the moment you can startover again or if urgnent i will link you with Jijali helper";
 
           let replies = [
+
               {
                   "content_type": "text",
                   "title": "Jijali Helper",
                   "payload": "LIVE_AGENT"
+              },
+              {
+                "content_type": "text",
+                "title": "Go to Menu",
+                "payload": "MENU"
               }
           ];
 
