@@ -271,6 +271,15 @@ function handleQuickReply(senderID, quickReply, messageId) {
         "Take the survey"
       );
       break;
+    
+    case "RETAKE":
+      dialogflowService.sendTextQueryToDialogFlow(
+        sessionIds,
+        handleDialogFlowResponse,
+        senderID,
+        "preprogram survey"
+      );
+      break;
     case "TOOK_YES":
       dialogflowService.sendTextQueryToDialogFlow(
         sessionIds,
@@ -333,6 +342,48 @@ function handleDialogFlowAction(
         ];
         fbService.sendQuickReply(sender, responseText, replies);
       }, 2000);
+
+      break;
+    case "took-survey":
+      if (fbService.isDefined(contexts[1]) && contexts[1].name.includes('took-survey_dialog_context')){
+        let finished = (fbService.isDefined(contexts[1].parameters.fields['finished_survey'])
+        && contexts[1].parameters.fields['finished_survey'] != '') ? contexts[1].parameters.fields['finished_survey'].stringValue : '';
+
+        if (finished == ''){
+          let replies = [
+            {
+                "content_type": "text",
+                "title": "yes",
+                "payload": "yes"
+            },
+            {
+                "content_type": "text",
+                "title": "no",
+                "payload": "no"
+            }
+          ];
+          fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+
+        }
+      } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('took')){
+        let finished = (fbService.isDefined(contexts[0].parameters.fields['finished_survey'])
+              && contexts[0].parameters.fields['finished_survey'] != '') ? contexts[0].parameters.fields['finished_survey'].stringValue : '';
+        if (finished == 'yes'){
+          fbService.sendTextMessage(sender, "Thank you!!. Kindly wait for the next steps you will be informed later")
+        } else if (finished == 'no'){
+          fbService.sendTextMessage(sender, "I am sorry you did not finish the survey. You will have to start over again")
+          fbService.sendTextMessage(sender, "Make sure you take the survey carefully for a succeful submission")
+          fbService.sendTextMessage(sender, "When you are ready retake the survey using the button below")
+          let replies = [
+            {
+                "content_type": "text",
+                "title": "yes",
+                "payload": "RETAKE"
+            }
+          ];
+          fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+        }
+      }
 
       break;
     case "end.goal":
