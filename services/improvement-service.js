@@ -20,7 +20,7 @@ module.exports = function(
     }
 
     client.query(
-      "INSERT into Improvement " +
+      "INSERT into improvement_data" +
         "(improvement, imp_responses, improvement2, imp_responses2, improvement3, imp_responses3)" +
         "VALUES($1, $2, $3, $4, $5, $6) RETURNING id",
       [
