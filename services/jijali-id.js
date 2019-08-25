@@ -18,7 +18,7 @@ module.exports = function(jijali_id) {
         if (err) {
           console.log(err);
         } else {
-          console.log("row inserted with id: " + result.rows[0].id);
+          console.log("row inserted with id: " + result.rows[0].jijali_id);
         }
       }
     );
