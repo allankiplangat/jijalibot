@@ -461,7 +461,7 @@ function handleDialogFlowAction(
                       "title": "Change job",
                       "payload": "Change job"
                   },
-                  
+
                   {
                       "content_type": "text",
                       "title": "Get a promotion",
@@ -484,23 +484,23 @@ function handleDialogFlowAction(
               let replies = [
                   {
                       "content_type": "text",
-                      "title": "Less than One",
-                      "payload": "Less than one"
+                      "title": "0-1",
+                      "payload": "0-1"
                   },
                   {
                       "content_type": "text",
-                      "title": "One to Two",
-                      "payload": "One to two"
+                      "title": "2-3",
+                      "payload": "2-3"
                   },
                   {
                       "content_type": "text",
-                      "title": "Three to Five",
-                      "payload": "Three to five"
+                      "title": "3-5",
+                      "payload": "3-5"
                   },
                   {
                       "content_type": "text",
-                      "title": "More than Five",
-                      "payload": "More than five"
+                      "title": "Over 5",
+                      "payload": "Over 5"
                   }
               ];
               fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
