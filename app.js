@@ -1009,7 +1009,7 @@ function handleDialogFlowAction(
               {
                 "content_type": "text",
                 "title": "Start Over",
-                "payload": "PRE_PROGRAM_SURVEY"
+                "payload": "GET_STARTED"
               }
           ];
 
