@@ -21,6 +21,7 @@ const jobApplicationService = require("./services/job-application-service");
 const preProgramService = require("./services/pre-program-service");
 const jijaliIdService = require("./services/jijali-id");
 const basicSurveyService = require("./services/basic_survey");
+const improvementService = require("./services/improvement-service");
 const surveyService = require("./services/survey-survey");
 let dialogflowService = require("./services/dialogflow-service");
 const fbService = require("./services/fb-service");
@@ -279,6 +280,15 @@ function handleQuickReply(senderID, quickReply, messageId) {
           handleDialogFlowResponse,
           senderID,
           "Take the Survey"
+        );
+        break;
+    
+    case "IMPROVEMENT":
+        dialogflowService.sendTextQueryToDialogFlow(
+          sessionIds,
+          handleDialogFlowResponse,
+          senderID,
+          "Areas I want to improve"
         );
         break;
     
@@ -705,11 +715,230 @@ function handleDialogFlowAction(
 
           if (endgoal != '' && profexp != '' && learningpreference != '' && learningtime != '' && studies != ''  && education != '') {
               basicSurveyService(endgoal, profexp, learningpreference, learningtime, studies, education);
+
+              let responseText = "The next questions are of your area of improvement press the button to continue";
+
+              let replies = [
+
+                  {
+                      "content_type": "text",
+                      "title": "Continue",
+                      "payload": "IMPROVEMENT"
+                  }
+              ];
+
+              fbService.sendQuickReply(sender, responseText, replies);
+
           }
   
       } 
       
       break;
+    
+      case "action.improvement":
+          
+          if (fbService.isDefined(contexts[1]) && contexts[1].name.includes('improvement_dialog_context')){
+
+            let improvement = (fbService.isDefined(contexts[1].parameters.fields['improvement'])
+              && contexts[1].parameters.fields['improvement'] != '') ? contexts[1].parameters.fields['improvement'].stringValue : '';
+
+            let imp_responses = (fbService.isDefined(contexts[1].parameters.fields['imp_responses'])
+              && contexts[1].parameters.fields['imp_responses'] != '') ? contexts[1].parameters.fields['imp_responses'].stringValue : '';
+
+            let improvement2 = (fbService.isDefined(contexts[1].parameters.fields['improvement2'])
+              && contexts[1].parameters.fields['improvement2'] != '') ? contexts[1].parameters.fields['improvement2'].stringValue : '';
+
+            let imp_responses2 = (fbService.isDefined(contexts[1].parameters.fields['imp_responses2'])
+              && contexts[1].parameters.fields['imp_responses2'] != '') ? contexts[1].parameters.fields['imp_responses2'].stringValue : '';
+
+            let improvement3 = (fbService.isDefined(contexts[1].parameters.fields['improvement3'])
+              && contexts[1].parameters.fields['improvement3'] != '') ? contexts[1].parameters.fields['improvement3'].stringValue : '';
+
+            let imp_responses3 = (fbService.isDefined(contexts[1].parameters.fields['imp_responses3'])
+              && contexts[1].parameters.fields['imp_responses3'] != '') ? contexts[1].parameters.fields['imp_responses3'].stringValue : '';
+
+
+            if (improvement == ''){
+              let replies = [
+                  {
+                      "content_type": "text",
+                      "title": "Finding jobs",
+                      "payload": "Finding jobs"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": "Applying for jobs",
+                      "payload": "Applying for jobs"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": " Improving performance",
+                      "payload": "Improving performance"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": " Selecting career",
+                      "payload": " Selecting career"
+                  }
+              ];
+              fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+            } else if (imp_responses == '') {
+              let replies = [
+                  {
+                      "content_type": "text",
+                      "title": "Very little",
+                      "payload": "Very little"
+                  },
+        
+                  {
+                    "content_type": "text",
+                    "title": "Quite a bit",
+                    "payload": "Quite a bit"
+                  },
+        
+                  {
+                      "content_type": "text",
+                      "title": "Very familiar",
+                      "payload": "Very familiar"
+                  },
+                  
+              ];
+              fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+            } else if (improvement2 == '') {
+              let replies = [
+                  {
+                      "content_type": "text",
+                      "title": "Finding jobs",
+                      "payload": "Finding jobs"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": "Applying for jobs",
+                      "payload": "Applying for jobs"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": " Improving performance",
+                      "payload": "Improving performance"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": " Selecting career",
+                      "payload": " Selecting career"
+                  }
+              ];
+              fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+            } else if (imp_responses2 == '') {
+              let replies = [
+                  {
+                      "content_type": "text",
+                      "title": "Very little",
+                      "payload": "Very little"
+                  },
+        
+                  {
+                    "content_type": "text",
+                    "title": "Quite a bit",
+                    "payload": "Quite a bit"
+                  },
+        
+                  {
+                      "content_type": "text",
+                      "title": "Very familiar",
+                      "payload": "Very familiar"
+                  },
+                  
+              ];
+              fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+            } else if (improvement3 == '') {
+              let replies = [
+                  {
+                      "content_type": "text",
+                      "title": "Finding jobs",
+                      "payload": "Finding jobs"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": "Applying for jobs",
+                      "payload": "Applying for jobs"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": " Improving performance",
+                      "payload": "Improving performance"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": " Selecting career",
+                      "payload": " Selecting career"
+                  }
+              ];
+              fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+            } else if (imp_responses3 == '') {
+              let replies = [
+                  {
+                      "content_type": "text",
+                      "title": "Very little",
+                      "payload": "Very little"
+                  },
+        
+                  {
+                    "content_type": "text",
+                    "title": "Quite a bit",
+                    "payload": "Quite a bit"
+                  },
+        
+                  {
+                      "content_type": "text",
+                      "title": "Very familiar",
+                      "payload": "Very familiar"
+                  },
+                  
+              ];
+              fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+            }
+          } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('improvement')){
+    
+              let improvement = (fbService.isDefined(contexts[0].parameters.fields['improvement'])
+                  && contexts[0].parameters.fields['improvement'] != '') ? contexts[0].parameters.fields['improvement'].stringValue : '';
+    
+              let imp_responses = (fbService.isDefined(contexts[0].parameters.fields['imp_responses'])
+                && contexts[0].parameters.fields['imp_responses'] != '') ? contexts[0].parameters.fields['imp_responses'].stringValue : '';
+    
+              let improvement2 = (fbService.isDefined(contexts[0].parameters.fields['improvement2'])
+                && contexts[0].parameters.fields['improvement2'] != '') ? contexts[0].parameters.fields['improvement2'].stringValue : '';
+    
+              let imp_responses2 = (fbService.isDefined(contexts[0].parameters.fields['imp_responses2'])
+                && contexts[0].parameters.fields['imp_responses2'] != '') ? contexts[0].parameters.fields['imp_responses2'].stringValue : '';
+        
+              
+              let improvement3 = (fbService.isDefined(contexts[0].parameters.fields['improvement3'])
+                  && contexts[0].parameters.fields['improvement3'] != '') ? contexts[0].parameters.fields['improvement3'].stringValue : '';
+    
+              let imp_responses3 = (fbService.isDefined(contexts[0].parameters.fields['imp_responses3'])
+                  && contexts[0].parameters.fields['imp_responses3'] != '') ? contexts[0].parameters.fields['imp_responses3'].stringValue : '';
+            
+              if (improvement != '' && imp_responses != '' && improvement2 != '' && imp_responses2 != '' && improvement3 != ''  && imp_responses3 != '') {
+                  improvementService(improvement, imp_responses, improvement2, imp_responses2, improvement3, imp_responses3);
+    
+                  let responseText = "The next questions are of your area of improvement press the button to continue";
+    
+                  let replies = [
+    
+                      {
+                          "content_type": "text",
+                          "title": "Continue",
+                          "payload": "IMPROVEMENT"
+                      }
+                  ];
+    
+                  fbService.sendQuickReply(sender, responseText, replies);
+    
+              }
+      
+          } 
+          
+          break;
     
     case "input.unknown":
       fbService.handleMessages(messages, sender);

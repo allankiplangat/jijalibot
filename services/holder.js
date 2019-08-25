@@ -1,28 +1,4 @@
-else if (area_improve == '') {
-    let replies = [
-        {
-            "content_type": "text",
-            "title": "Finding jobs",
-            "payload": "Finding jobs"
-        },
-        {
-            "content_type": "text",
-            "title": "Applying for jobs",
-            "payload": "Applying for jobs"
-        },
-        {
-            "content_type": "text",
-            "title": " Improving performance",
-            "payload": "Improving performance"
-        },
-        {
-            "content_type": "text",
-            "title": " Selecting career",
-            "payload": " Selecting career"
-        }
-    ];
-    fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
-  } else if (area_improve2 == '') {
+else if (area_improve2 == '') {
     let replies = [
       {
           "content_type": "text",
