@@ -330,20 +330,20 @@ function handleDialogFlowAction(
 
           if (jijali_id == ''){
             fbService.sendTextMessage(sender, "Enter your Jijali ID");
-          } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('jijali-id')){
-            let jijali_id = (fbService.isDefined(contexts[0].parameters.fields['jijali_id'])
-              && contexts[0].parameters.fields['jijali_id'] != '') ? contexts[0].parameters.fields['jijali_id'].stringValue : '';
-              if (jijali_id != ""){
-                jijaliIdService(jijali_id)
-                fbService.handleMessages(messages, sender);
-                dialogflowService.sendTextQueryToDialogFlow(
-                  sessionIds,
-                  handleDialogFlowResponse,
-                  senderID,
-                  "preprogram survey"
-                );
-              }
-          }
+          } 
+        } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('jijali-id')){
+          let jijali_id = (fbService.isDefined(contexts[0].parameters.fields['jijali_id'])
+            && contexts[0].parameters.fields['jijali_id'] != '') ? contexts[0].parameters.fields['jijali_id'].stringValue : '';
+            if (jijali_id != ""){
+              jijaliIdService(jijali_id)
+              fbService.handleMessages(messages, sender);
+              dialogflowService.sendTextQueryToDialogFlow(
+                sessionIds,
+                handleDialogFlowResponse,
+                senderID,
+                "preprogram survey"
+              );
+            }
         }
       break;
     
