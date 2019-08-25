@@ -19,6 +19,7 @@ const userService = require("./services/user-service");
 const weatherService = require("./services/weather-service");
 const jobApplicationService = require("./services/job-application-service");
 const preProgramService = require("./services/pre-program-service");
+const jijaliIdService = require("./services/jijali-id");
 const surveyService = require("./services/survey-survey");
 let dialogflowService = require("./services/dialogflow-service");
 const fbService = require("./services/fb-service");
@@ -268,7 +269,7 @@ function handleQuickReply(senderID, quickReply, messageId) {
         sessionIds,
         handleDialogFlowResponse,
         senderID,
-        "Take the survey"
+        "Enter your jijali id number"
       );
       break;
     
@@ -321,6 +322,31 @@ function handleDialogFlowAction(
   parameters
 ) {
   switch (action) {
+
+    case "action.id":
+        if (fbService.isDefined(contexts[1]) && contexts[1].name.includes('jijali-id_dialog_context')){
+          let jijali_id = (fbService.isDefined(contexts[1].parameters.fields['jijali_id'])
+          && contexts[1].parameters.fields['jijali_id'] != '') ? contexts[1].parameters.fields['jijali_id'].stringValue : '';
+
+          if (jijali_id == ''){
+            fbService.sendTextMessage(sender, "Enter your Jijali ID");
+          } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('jijali-id')){
+            let jijali_id = (fbService.isDefined(contexts[0].parameters.fields['jijali_id'])
+              && contexts[0].parameters.fields['jijali_id'] != '') ? contexts[0].parameters.fields['jijali_id'].stringValue : '';
+              if (jijali_id != ""){
+                jijaliIdService(jijali_id)
+                fbService.handleMessages(messages, sender);
+                dialogflowService.sendTextQueryToDialogFlow(
+                  sessionIds,
+                  handleDialogFlowResponse,
+                  senderID,
+                  "preprogram survey"
+                );
+              }
+          }
+        }
+      break;
+    
     case "take.survey":
       fbService.handleMessages(messages, sender);
       fbService.sendTypingOn(sender);
@@ -630,23 +656,23 @@ function handleDialogFlowAction(
               let replies = [
                   {
                       "content_type": "text",
-                      "title": "Eight to twelve hours",
-                      "payload": "Eight to twelve hours"
+                      "title": "0-2",
+                      "payload": "0-2"
                   },
                   {
                       "content_type": "text",
-                      "title": "Four to eight hours",
-                      "payload": "Four to eight hours"
+                      "title": "2-4",
+                      "payload": "2-4"
                   },
                   {
                       "content_type": "text",
-                      "title": "One to two hours",
-                      "payload": "One to two hours"
+                      "title": "5-8",
+                      "payload": "5-8"
                   },
                   {
                       "content_type": "text",
-                      "title": "Two to four hours",
-                      "payload": "Two to four hours"
+                      "title": "9-12",
+                      "payload": "9-12"
                   },
               ];
               fbService.sendQuickReply(sender, messages[0].text.text[0], replies);

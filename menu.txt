@@ -1,4 +1,5 @@
 curl -X POST -H "Content-Type: application/json" -d '{
+Thank you for taking the pre program survey.  You will receive more information on the next steps Happy learning U+1F44F
 "persistent_menu":[
     {
     "locale":"default",
