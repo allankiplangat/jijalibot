@@ -369,7 +369,7 @@ function handleDialogFlowAction(
         let finished = (fbService.isDefined(contexts[0].parameters.fields['finished_survey'])
               && contexts[0].parameters.fields['finished_survey'] != '') ? contexts[0].parameters.fields['finished_survey'].stringValue : '';
         if (finished == 'yes'){
-          fbService.sendTextMessage(sender, "Thank you!!. Kindly wait for the next steps you will be informed later")
+          fbService.sendTextMessage(sender, "Great! I will get back to you with the next steps later.")
         } else if(finished == 'no'){
           let responseText = " You will need to start over again. Please be attentive and do not leave the chat till you complete the survey. It will take around 5 minutes of your time.";
 
