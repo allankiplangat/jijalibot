@@ -272,6 +272,14 @@ function handleQuickReply(senderID, quickReply, messageId) {
         "Enter your jijali id number"
       );
       break;
+    case "READINESS":
+        dialogflowService.sendTextQueryToDialogFlow(
+          sessionIds,
+          handleDialogFlowResponse,
+          senderID,
+          "Take the Survey"
+        );
+        break;
     
     case "RETAKE":
       dialogflowService.sendTextQueryToDialogFlow(
@@ -334,15 +342,19 @@ function handleDialogFlowAction(
         } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('jijali-id')){
           let jijali_id = (fbService.isDefined(contexts[0].parameters.fields['jijali_id'])
             && contexts[0].parameters.fields['jijali_id'] != '') ? contexts[0].parameters.fields['jijali_id'].stringValue : '';
-            if (jijali_id != ""){
+            if (jijali_id != "" &&  jijali_id<= "3000"){
               jijaliIdService(jijali_id)
-              fbService.handleMessages(messages, sender);
-              dialogflowService.sendTextQueryToDialogFlow(
-                sessionIds,
-                handleDialogFlowResponse,
-                senderID,
-                "preprogram survey"
-              );
+              let responseText = "You can start the work readiness survey by using the button";
+
+              let replies = [
+                {
+                  content_type: "text",
+                  title: "Work Readiness",
+                  payload: "WORK_READINESS"
+                }
+              ];
+              fbService.sendQuickReply(sender, responseText, replies);
+              
             }
         }
       break;
