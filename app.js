@@ -454,22 +454,28 @@ function handleDialogFlowAction(
                   {
                       "content_type": "text",
                       "title": "Get a job",
-                      "payload": "Get Job"
+                      "payload": "Get a job"
                   },
                   {
                       "content_type": "text",
-                      "title": "Change my job",
-                      "payload": "CHANGE_JOB"
+                      "title": "Change job",
+                      "payload": "Change job"
                   },
+                  
                   {
                       "content_type": "text",
-                      "title": "Salary Increase",
-                      "payload": "SALARY_RAISE"
+                      "title": "Get a promotion",
+                      "payload": "Get a promotion"
                   },
                   {
-                      "content_type": "text",
-                      "title": "Get Promotion",
-                      "payload": "GET_PROMOTION"
+                    "content_type": "text",
+                    "title": "Choose career",
+                    "payload": "Choose career"
+                  },
+                  {
+                    "content_type": "text",
+                    "title": "Prepare for career",
+                    "payload": "Prepare for career"
                   }
               ];
               fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
