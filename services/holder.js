@@ -358,3 +358,18 @@ fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
   else if (identity == '') {
       fbService.sendTextMessage(sender, "Enter your Jijali ID");
   } 
+
+
+
+  && area_improve != '' && responses != ''   && identity != ''  && similarity != '' && proving != '' && account != '' && skills != '' && development != '' && lifestyle != '' && income != '' && support != '' && progress != ''
+
+
+  let conv_similarity = Number(similarity);
+              let conv_proving = Number(proving);
+              let conv_account = Number(account);
+              let conv_skills = Number(skills);
+              let conv_development = Number(development);
+              let conv_lifestyle = Number(lifestyle);
+              let conv_income = Number(income);
+              let conv_support = Number(support);
+              let conv_progress = Number(progress)

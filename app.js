@@ -20,6 +20,7 @@ const weatherService = require("./services/weather-service");
 const jobApplicationService = require("./services/job-application-service");
 const preProgramService = require("./services/pre-program-service");
 const jijaliIdService = require("./services/jijali-id");
+const basicSurveyService = require("./services/basic_survey");
 const surveyService = require("./services/survey-survey");
 let dialogflowService = require("./services/dialogflow-service");
 const fbService = require("./services/fb-service");
@@ -643,77 +644,67 @@ function handleDialogFlowAction(
 
           let endgoal = (fbService.isDefined(contexts[0].parameters.fields['end_goal'])
               && contexts[0].parameters.fields['end_goal'] != '') ? contexts[0].parameters.fields['end_goal'].stringValue : '';
-          
-          let studies = (fbService.isDefined(contexts[0].parameters.fields['study_area'])
-              && contexts[0].parameters.fields['study_area'] != '') ? contexts[0].parameters.fields['study_area'].stringValue : '';
-          
-          let proving = (fbService.isDefined(contexts[0].parameters.fields['prove_myself'])
-              && contexts[0].parameters.fields['prove_myself'] != '') ? contexts[0].parameters.fields['prove_myself'].stringValue : '';
-          
-          let lifestyle = (fbService.isDefined(contexts[0].parameters.fields['lifestyle_improvement'])
-          && contexts[0].parameters.fields['lifestyle_improvement'] != '') ? contexts[0].parameters.fields['lifestyle_improvement'].stringValue : '';
-          
-          let skills = (fbService.isDefined(contexts[0].parameters.fields['showcase_skills'])
-              && contexts[0].parameters.fields['showcase_skills'] != '') ? contexts[0].parameters.fields['showcase_skills'].stringValue : '';
-          
-          let income = (fbService.isDefined(contexts[0].parameters.fields['income_growth'])
-              && contexts[0].parameters.fields['income_growth'] != '') ? contexts[0].parameters.fields['income_growth'].stringValue : '';
-          
-          let progress = (fbService.isDefined(contexts[0].parameters.fields['making_progress'])
-          && contexts[0].parameters.fields['making_progress'] != '') ? contexts[0].parameters.fields['making_progress'].stringValue : '';
-          
-          let development = (fbService.isDefined(contexts[0].parameters.fields['self_development'])
-          && contexts[0].parameters.fields['self_development'] != '') ? contexts[0].parameters.fields['self_development'].stringValue : '';
-          
-          let account = (fbService.isDefined(contexts[0].parameters.fields['accountability'])
-              && contexts[0].parameters.fields['accountability'] != '') ? contexts[0].parameters.fields['accountability'].stringValue : '';
-          
-          let support = (fbService.isDefined(contexts[0].parameters.fields['support_others'])
-          && contexts[0].parameters.fields['support_others'] != '') ? contexts[0].parameters.fields['support_others'].stringValue : '';
-          
-          let education = (fbService.isDefined(contexts[0].parameters.fields['education_level'])
-              && contexts[0].parameters.fields['education_level'] != '') ? contexts[0].parameters.fields['education_level'].stringValue : '';
-          
-          let similarity = (fbService.isDefined(contexts[0].parameters.fields['like_minded'])
-          && contexts[0].parameters.fields['like_minded'] != '') ? contexts[0].parameters.fields['like_minded'].stringValue : '';
-      
-          let identity = (fbService.isDefined(contexts[0].parameters.fields['id_number'])
-          && contexts[0].parameters.fields['id_number'] != '') ? contexts[0].parameters.fields['id_number'].stringValue : '';
 
           let profexp = (fbService.isDefined(contexts[0].parameters.fields['prof_exp'])
           && contexts[0].parameters.fields['prof_exp'] != '') ? contexts[0].parameters.fields['prof_exp'].stringValue : '';
-
-          let area_improve = (fbService.isDefined(contexts[0].parameters.fields['improvement'])
-          && contexts[0].parameters.fields['improvement'] != '') ? contexts[0].parameters.fields['improvement'].stringValue : '';
-
-          let area_improve2 = (fbService.isDefined(contexts[0].parameters.fields['improvement2'])
-          && contexts[0].parameters.fields['improvement2'] != '') ? contexts[0].parameters.fields['improvement2'].stringValue : '';
-
-          let responses = (fbService.isDefined(contexts[0].parameters.fields['imp_responses'])
-          && contexts[0].parameters.fields['imp_responses'] != '') ? contexts[0].parameters.fields['imp_responses'].stringValue : '';
 
           let learningpreference = (fbService.isDefined(contexts[0].parameters.fields['learning_preference'])
           && contexts[0].parameters.fields['learning_preference'] != '') ? contexts[0].parameters.fields['learning_preference'].stringValue : '';
 
           let learningtime = (fbService.isDefined(contexts[0].parameters.fields['learning_time'])
           && contexts[0].parameters.fields['learning_time'] != '') ? contexts[0].parameters.fields['learning_time'].stringValue : '';
+    
           
-          if (endgoal != '' && profexp != '' && area_improve != '' && responses != '' && learningpreference != '' && learningtime != '' && identity != '' && studies != '' && education != '' && similarity != '' && proving != '' && account != '' && skills != '' && development != '' && lifestyle != '' && income != '' && support != '' && progress != '') {
-              
-              let conv_similarity = Number(similarity);
-              let conv_proving = Number(proving);
-              let conv_account = Number(account);
-              let conv_skills = Number(skills);
-              let conv_development = Number(development);
-              let conv_lifestyle = Number(lifestyle);
-              let conv_income = Number(income);
-              let conv_support = Number(support);
-              let conv_progress = Number(progress)
+          let studies = (fbService.isDefined(contexts[0].parameters.fields['study_area'])
+              && contexts[0].parameters.fields['study_area'] != '') ? contexts[0].parameters.fields['study_area'].stringValue : '';
 
+          let education = (fbService.isDefined(contexts[0].parameters.fields['education_level'])
+              && contexts[0].parameters.fields['education_level'] != '') ? contexts[0].parameters.fields['education_level'].stringValue : '';
+          
+          // let proving = (fbService.isDefined(contexts[0].parameters.fields['prove_myself'])
+          //     && contexts[0].parameters.fields['prove_myself'] != '') ? contexts[0].parameters.fields['prove_myself'].stringValue : '';
+          
+          // let lifestyle = (fbService.isDefined(contexts[0].parameters.fields['lifestyle_improvement'])
+          // && contexts[0].parameters.fields['lifestyle_improvement'] != '') ? contexts[0].parameters.fields['lifestyle_improvement'].stringValue : '';
+          
+          // let skills = (fbService.isDefined(contexts[0].parameters.fields['showcase_skills'])
+          //     && contexts[0].parameters.fields['showcase_skills'] != '') ? contexts[0].parameters.fields['showcase_skills'].stringValue : '';
+          
+          // let income = (fbService.isDefined(contexts[0].parameters.fields['income_growth'])
+          //     && contexts[0].parameters.fields['income_growth'] != '') ? contexts[0].parameters.fields['income_growth'].stringValue : '';
+          
+          // let progress = (fbService.isDefined(contexts[0].parameters.fields['making_progress'])
+          // && contexts[0].parameters.fields['making_progress'] != '') ? contexts[0].parameters.fields['making_progress'].stringValue : '';
+          
+          // let development = (fbService.isDefined(contexts[0].parameters.fields['self_development'])
+          // && contexts[0].parameters.fields['self_development'] != '') ? contexts[0].parameters.fields['self_development'].stringValue : '';
+          
+          // let account = (fbService.isDefined(contexts[0].parameters.fields['accountability'])
+          //     && contexts[0].parameters.fields['accountability'] != '') ? contexts[0].parameters.fields['accountability'].stringValue : '';
+          
+          // let support = (fbService.isDefined(contexts[0].parameters.fields['support_others'])
+          // && contexts[0].parameters.fields['support_others'] != '') ? contexts[0].parameters.fields['support_others'].stringValue : '';
+          
+          
+          
+          // let similarity = (fbService.isDefined(contexts[0].parameters.fields['like_minded'])
+          // && contexts[0].parameters.fields['like_minded'] != '') ? contexts[0].parameters.fields['like_minded'].stringValue : '';
+      
+          // let identity = (fbService.isDefined(contexts[0].parameters.fields['id_number'])
+          // && contexts[0].parameters.fields['id_number'] != '') ? contexts[0].parameters.fields['id_number'].stringValue : '';
 
-              preProgramService(endgoal, profexp, area_improve, responses, learningpreference, learningtime, identity, studies, education, conv_similarity, conv_proving, conv_account, conv_skills, conv_development, conv_lifestyle, conv_income, conv_support, conv_progress);
-              fbService.handleMessages(messages, sender);
+          
+          // let area_improve = (fbService.isDefined(contexts[0].parameters.fields['improvement'])
+          // && contexts[0].parameters.fields['improvement'] != '') ? contexts[0].parameters.fields['improvement'].stringValue : '';
 
+          // let area_improve2 = (fbService.isDefined(contexts[0].parameters.fields['improvement2'])
+          // && contexts[0].parameters.fields['improvement2'] != '') ? contexts[0].parameters.fields['improvement2'].stringValue : '';
+
+          // let responses = (fbService.isDefined(contexts[0].parameters.fields['imp_responses'])
+          // && contexts[0].parameters.fields['imp_responses'] != '') ? contexts[0].parameters.fields['imp_responses'].stringValue : '';
+
+          if (endgoal != '' && profexp != '' && learningpreference != '' && learningtime != '' && studies != ''  && education != '') {
+              basicSurveyService(endgoal, profexp, learningpreference, learningtime, studies, education);
           }
   
       } 
