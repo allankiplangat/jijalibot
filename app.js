@@ -997,19 +997,19 @@ function handleDialogFlowAction(
 
       //ask what user wants to do next
       setTimeout(function() {
-          let responseText = "Hi I am sorry, you did not finish your conversation or you have entered something i cant recognize at the moment you can startover again or if urgnent i will link you with Jijali helper";
+          let responseText = "I am sorry I cannot understand you. If you want to continue the previous conversation, please press the Start Over button below. If you need to get in touch with Jijali team, please contact your mentor or press the Contact Jijali button below.";
 
           let replies = [
 
               {
                   "content_type": "text",
-                  "title": "Jijali Helper",
+                  "title": "Contact Jijali",
                   "payload": "LIVE_AGENT"
               },
               {
                 "content_type": "text",
-                "title": "Go to Menu",
-                "payload": "MENU"
+                "title": "Start Over",
+                "payload": "PRE_PROGRAM_SURVEY"
               }
           ];
 
