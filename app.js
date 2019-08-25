@@ -437,6 +437,9 @@ function handleDialogFlowAction(
           let area_improve = (fbService.isDefined(contexts[1].parameters.fields['improvement'])
           && contexts[1].parameters.fields['improvement'] != '') ? contexts[1].parameters.fields['improvement'].stringValue : '';
 
+          let area_improve2 = (fbService.isDefined(contexts[1].parameters.fields['improvement2'])
+          && contexts[1].parameters.fields['improvement2'] != '') ? contexts[1].parameters.fields['improvement2'].stringValue : '';
+
           let responses = (fbService.isDefined(contexts[1].parameters.fields['imp_responses'])
           && contexts[1].parameters.fields['imp_responses'] != '') ? contexts[1].parameters.fields['imp_responses'].stringValue : '';
 
@@ -510,28 +513,23 @@ function handleDialogFlowAction(
               let replies = [
                   {
                       "content_type": "text",
+                      "title": "Finding jobs",
+                      "payload": "Finding jobs"
+                  },
+                  {
+                      "content_type": "text",
                       "title": "Applying for jobs",
                       "payload": "Applying for jobs"
                   },
                   {
                       "content_type": "text",
-                      "title": "CV Preparation",
-                      "payload": "CV Preparation"
+                      "title": " Improving performance",
+                      "payload": "Improving performance"
                   },
                   {
                       "content_type": "text",
-                      "title": "Finding job opportunities",
-                      "payload": "Finding job opportunities"
-                  },
-                  {
-                      "content_type": "text",
-                      "title": "Great job performance",
-                      "payload": "Great job performance"
-                  },
-                  {
-                      "content_type": "text",
-                      "title": "Pass Interview",
-                      "payload": "Pass Interview"
+                      "title": " Selecting career",
+                      "payload": " Selecting career"
                   }
               ];
               fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
@@ -915,7 +913,31 @@ function handleDialogFlowAction(
           }
           else if (identity == '') {
               fbService.sendTextMessage(sender, "Enter your Jijali ID");
-          } 
+          } else if (area_improve2 == '') {
+            let replies = [
+              {
+                  "content_type": "text",
+                  "title": "Finding jobs",
+                  "payload": "Finding jobs"
+              },
+              {
+                  "content_type": "text",
+                  "title": "Applying for jobs",
+                  "payload": "Applying for jobs"
+              },
+              {
+                  "content_type": "text",
+                  "title": " Improving performance",
+                  "payload": "Improving performance"
+              },
+              {
+                  "content_type": "text",
+                  "title": "Selecting career",
+                  "payload": "Selecting career"
+              }
+          ];
+            fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+        }
 
       } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('survey')){
           // let endgoal = (fbService.isDefined(contexts[0].parameters.fields['end_goal']) && contexts[0].parameters.fields['end_goal']!='') ? contexts[0].parameters.fields['end_goal'].stringValue : '';
@@ -964,6 +986,9 @@ function handleDialogFlowAction(
 
           let area_improve = (fbService.isDefined(contexts[0].parameters.fields['improvement'])
           && contexts[0].parameters.fields['improvement'] != '') ? contexts[0].parameters.fields['improvement'].stringValue : '';
+
+          let area_improve2 = (fbService.isDefined(contexts[0].parameters.fields['improvement2'])
+          && contexts[0].parameters.fields['improvement2'] != '') ? contexts[0].parameters.fields['improvement2'].stringValue : '';
 
           let responses = (fbService.isDefined(contexts[0].parameters.fields['imp_responses'])
           && contexts[0].parameters.fields['imp_responses'] != '') ? contexts[0].parameters.fields['imp_responses'].stringValue : '';
