@@ -1009,7 +1009,7 @@ function handleDialogFlowAction(
               {
                 "content_type": "text",
                 "title": "Start Over",
-                "payload": "GET_STARTED"
+                "payload": "RETAKE"
               }
           ];
 
