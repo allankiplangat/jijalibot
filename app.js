@@ -1215,7 +1215,7 @@ function receivedPostback(event) {
 
         fbService.sendButtonMessage(
           senderID,
-          "Please choose an option for us to give you the access to your learning course.",
+          "Please answer the Pre-program Suvey. This information will help us build a personalized course for you. Please make sure you have around 5 minutes available, and do not leave the chat till you complete the full survey.",
           buttons
         );
       }, 3000);
