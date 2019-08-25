@@ -533,7 +533,31 @@ function handleDialogFlowAction(
                   }
               ];
               fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
-          } else if (responses == '') {
+          } else if (area_improve2 == '') {
+            let replies = [
+              {
+                  "content_type": "text",
+                  "title": "Finding jobs",
+                  "payload": "Finding jobs"
+              },
+              {
+                  "content_type": "text",
+                  "title": "Applying for jobs",
+                  "payload": "Applying for jobs"
+              },
+              {
+                  "content_type": "text",
+                  "title": " Improving performance",
+                  "payload": "Improving performance"
+              },
+              {
+                  "content_type": "text",
+                  "title": "Selecting career",
+                  "payload": "Selecting career"
+              }
+          ];
+            fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+        } else if (responses == '') {
 
               let replies = [
                   {
@@ -913,31 +937,7 @@ function handleDialogFlowAction(
           }
           else if (identity == '') {
               fbService.sendTextMessage(sender, "Enter your Jijali ID");
-          } else if (area_improve2 == '') {
-            let replies = [
-              {
-                  "content_type": "text",
-                  "title": "Finding jobs",
-                  "payload": "Finding jobs"
-              },
-              {
-                  "content_type": "text",
-                  "title": "Applying for jobs",
-                  "payload": "Applying for jobs"
-              },
-              {
-                  "content_type": "text",
-                  "title": " Improving performance",
-                  "payload": "Improving performance"
-              },
-              {
-                  "content_type": "text",
-                  "title": "Selecting career",
-                  "payload": "Selecting career"
-              }
-          ];
-            fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
-        }
+          } 
 
       } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('survey')){
           // let endgoal = (fbService.isDefined(contexts[0].parameters.fields['end_goal']) && contexts[0].parameters.fields['end_goal']!='') ? contexts[0].parameters.fields['end_goal'].stringValue : '';
