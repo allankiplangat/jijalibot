@@ -443,6 +443,9 @@ function handleDialogFlowAction(
           let responses = (fbService.isDefined(contexts[1].parameters.fields['imp_responses'])
           && contexts[1].parameters.fields['imp_responses'] != '') ? contexts[1].parameters.fields['imp_responses'].stringValue : '';
 
+          let responses2 = (fbService.isDefined(contexts[1].parameters.fields['imp_responses2'])
+          && contexts[1].parameters.fields['imp_responses2'] != '') ? contexts[1].parameters.fields['imp_responses2'].stringValue : '';
+
           let learningpreference = (fbService.isDefined(contexts[1].parameters.fields['learning_preference'])
           && contexts[1].parameters.fields['learning_preference'] != '') ? contexts[1].parameters.fields['learning_preference'].stringValue : '';
 
@@ -558,18 +561,11 @@ function handleDialogFlowAction(
           ];
             fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
         } else if (responses == '') {
-
               let replies = [
                   {
-                    "content_type": "text",
-                    "title": "Not at all",
-                    "payload": "Not at all"
-                  },
-                  
-                  {
                       "content_type": "text",
-                      "title": "Very Little",
-                      "payload": "Very Little"
+                      "title": "Very little",
+                      "payload": "Very little"
                   },
 
                   {
@@ -580,8 +576,31 @@ function handleDialogFlowAction(
 
                   {
                       "content_type": "text",
-                      "title": "Very Familiar",
-                      "payload": "Very Familiar"
+                      "title": "Very familiar",
+                      "payload": "Very familiar"
+                  },
+                  
+              ];
+              fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+          } else if (responses2 == '') {
+
+              let replies = [
+                  {
+                      "content_type": "text",
+                      "title": "Very little",
+                      "payload": "Very little"
+                  },
+
+                  {
+                    "content_type": "text",
+                    "title": "Quite a bit",
+                    "payload": "Quite a bit"
+                  },
+
+                  {
+                      "content_type": "text",
+                      "title": "Very familiar",
+                      "payload": "Very familiar"
                   },
                   
               ];
