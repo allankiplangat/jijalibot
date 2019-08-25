@@ -12,13 +12,13 @@ module.exports = function(jijali_id) {
       return console.error("Error acquiring client", err.stack);
     }
     client.query(
-      "INSERT into ids " + "(jijali_id)" + "VALUES($1) RETURNING id",
+      "INSERT into identity " + "(jijali_id)" + "VALUES($1) RETURNING id",
       [jijali_id],
       function(err, result) {
         if (err) {
           console.log(err);
         } else {
-          console.log("row inserted with id: " + result.rows[0].jijali_id);
+          console.log("row inserted with id: " + result.rows[0].id);
         }
       }
     );
