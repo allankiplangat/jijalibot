@@ -272,7 +272,7 @@ function handleQuickReply(senderID, quickReply, messageId) {
         "Enter your jijali id number"
       );
       break;
-    case "READINESS":
+    case "WORK_READINESS":
         dialogflowService.sendTextQueryToDialogFlow(
           sessionIds,
           handleDialogFlowResponse,
