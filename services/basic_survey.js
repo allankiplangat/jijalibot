@@ -21,15 +21,15 @@ module.exports = function(
 
     client.query(
       "INSERT into basic_survey " +
-        "(endgoal, profexp, learningpreference, learningtime, studies, education)" +
+        "(end_goal, prof_exp, learning_preference, learning_time, study_area, education_level)" +
         "VALUES($1, $2, $3, $4, $5, $6) RETURNING id",
       [
-        end_goal,
-        pro_fexp,
-        learning_preference,
-        learning_time,
-        study_area,
-        education_level
+        endgoal,
+        profexp,
+        learningpreference,
+        learningtime,
+        studies,
+        education
       ],
       function(err, result) {
         if (err) {
