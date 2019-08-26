@@ -305,7 +305,7 @@ function handleQuickReply(senderID, quickReply, messageId) {
         sessionIds,
         handleDialogFlowResponse,
         senderID,
-        "I want to take the survey"
+        "preprogram survey"
       );
       break;
     case "TOOK_YES":
