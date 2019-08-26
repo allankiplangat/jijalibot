@@ -305,7 +305,7 @@ function handleQuickReply(senderID, quickReply, messageId) {
         sessionIds,
         handleDialogFlowResponse,
         senderID,
-        "Enter your jijali id number"
+        "Preprogram survey"
       );
       break;
     case "TOOK_YES":
