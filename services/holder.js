@@ -340,7 +340,7 @@ fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
   && area_improve != '' && responses != ''   && identity != ''  && similarity != '' && proving != '' && account != '' && skills != '' && development != '' && lifestyle != '' && income != '' && support != '' && progress != ''
 
 
-  let conv_similarity = Number(similarity);
+              let conv_similarity = Number(similarity);
               let conv_proving = Number(proving);
               let conv_account = Number(account);
               let conv_skills = Number(skills);
