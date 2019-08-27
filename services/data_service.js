@@ -13,7 +13,8 @@ module.exports = function({ id, basic_survey, improvements, motivations }) {
     learningpreference,
     learningtime,
     studies,
-    education
+    education,
+    business
   } = basic_survey;
   var {
     improvement,
@@ -43,8 +44,8 @@ module.exports = function({ id, basic_survey, improvements, motivations }) {
 
     client.query(
       "INSERT into jijalidata" +
-        "( jijali_id,endgoal,profexp,learningpreference,learningtime,studies,education,improvement,imp_responses,improvement2,imp_responses2,improvement3,imp_responses3,conv_like_minded,conv_proof_myself,conv_accountability,conv_showcase_skills,conv_self_development,conv_lifestyle_improvement,conv_income_growth,conv_support_others,conv_making_progress)" +
-        "VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22) RETURNING id",
+        "( jijali_id,endgoal,profexp,learningpreference,learningtime,studies,education,business,improvement,imp_responses,improvement2,imp_responses2,improvement3,imp_responses3,conv_like_minded,conv_proof_myself,conv_accountability,conv_showcase_skills,conv_self_development,conv_lifestyle_improvement,conv_income_growth,conv_support_others,conv_making_progress)" +
+        "VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23) RETURNING id",
       [
         id,
         endgoal,
@@ -53,6 +54,7 @@ module.exports = function({ id, basic_survey, improvements, motivations }) {
         learningtime,
         studies,
         education,
+        business,
         improvement,
         imp_responses,
         improvement2,

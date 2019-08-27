@@ -290,7 +290,7 @@ function handleQuickReply(senderID, quickReply, messageId) {
         sessionIds,
         handleDialogFlowResponse,
         senderID,
-        "Take the Survey"
+        "Entrepreneurship Survey"
       );
       break;
     
@@ -302,6 +302,15 @@ function handleQuickReply(senderID, quickReply, messageId) {
           "Areas I want to improve"
         );
         break;
+
+    case "IMPROVEMENT2":
+      dialogflowService.sendTextQueryToDialogFlow(
+        sessionIds,
+        handleDialogFlowResponse,
+        senderID,
+        "Areas an entrepreneur should improve"
+      );
+      break;
     case "MOTIVATIONS":
         dialogflowService.sendTextQueryToDialogFlow(
           sessionIds,
@@ -470,8 +479,6 @@ function handleDialogFlowAction(
           
       if (fbService.isDefined(contexts[1]) && contexts[1].name.includes('pre-program-survey_dialog_context')){
 
-          const id = data.id;
-
           let endgoal = (fbService.isDefined(contexts[1].parameters.fields['end_goal'])
               && contexts[1].parameters.fields['end_goal'] != '') ? contexts[1].parameters.fields['end_goal'].stringValue : '';
 
@@ -490,7 +497,7 @@ function handleDialogFlowAction(
           let education = (fbService.isDefined(contexts[1].parameters.fields['education_level'])
           && contexts[1].parameters.fields['education_level'] != '') ? contexts[1].parameters.fields['education_level'].stringValue : '';
           
-          if (endgoal == '' && data <= '3000') {
+          if (endgoal == '') {
               // fbService.handleMessages(messages, sender);
               // let emailContent = "A new app"
               // sendEmail('new job', emailContent)
@@ -634,31 +641,7 @@ function handleDialogFlowAction(
             ];
             fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
             
-          } else if (endgoal == '' && data > '3000') {
-            // fbService.handleMessages(messages, sender);
-            // let emailContent = "A new app"
-            // sendEmail('new job', emailContent)
-            let replies = [
-                {
-                    "content_type": "text",
-                    "title": "Start business",
-                    "payload": "Start business"
-                },
-                {
-                    "content_type": "text",
-                    "title": "Improve business",
-                    "payload": "Improve business"
-                },
-
-                {
-                    "content_type": "text",
-                    "title": "Implement idea",
-                    "payload": "Implement idea"
-                }
-            ];
-            fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
-        
-      } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('survey')){
+          } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('survey')){
           // let endgoal = (fbService.isDefined(contexts[0].parameters.fields['end_goal']) && contexts[0].parameters.fields['end_goal']!='') ? contexts[0].parameters.fields['end_goal'].stringValue : '';
 
 
@@ -702,6 +685,265 @@ function handleDialogFlowAction(
       } 
     }
       break;
+    
+
+    case "entrepreneur.basic":
+        
+        if (fbService.isDefined(contexts[1]) && contexts[1].name.includes('entreprenureship_dialog_context')){
+
+            let endgoal = (fbService.isDefined(contexts[1].parameters.fields['end_goal'])
+                && contexts[1].parameters.fields['end_goal'] != '') ? contexts[1].parameters.fields['end_goal'].stringValue : '';
+
+            let profexp = (fbService.isDefined(contexts[1].parameters.fields['prof_exp'])
+            && contexts[1].parameters.fields['prof_exp'] != '') ? contexts[1].parameters.fields['prof_exp'].stringValue : '';
+
+            let learningpreference = (fbService.isDefined(contexts[1].parameters.fields['learning_preference'])
+            && contexts[1].parameters.fields['learning_preference'] != '') ? contexts[1].parameters.fields['learning_preference'].stringValue : '';
+
+            let learningtime = (fbService.isDefined(contexts[1].parameters.fields['learning_time'])
+                && contexts[1].parameters.fields['learning_time'] != '') ? contexts[1].parameters.fields['learning_time'].stringValue : '';
+
+            let studies = (fbService.isDefined(contexts[1].parameters.fields['study_area'])
+                && contexts[1].parameters.fields['study_area'] != '') ? contexts[1].parameters.fields['study_area'].stringValue : '';
+
+            let education = (fbService.isDefined(contexts[1].parameters.fields['education_level'])
+            && contexts[1].parameters.fields['education_level'] != '') ? contexts[1].parameters.fields['education_level'].stringValue : '';
+
+            let business = (fbService.isDefined(contexts[1].parameters.fields['business_area'])
+            && contexts[1].parameters.fields['business_area'] != '') ? contexts[1].parameters.fields['business_area'].stringValue : '';
+            
+            if (endgoal == '') {
+                // fbService.handleMessages(messages, sender);
+                // let emailContent = "A new app"
+                // sendEmail('new job', emailContent)
+                let replies = [
+                    {
+                        "content_type": "text",
+                        "title": "Start business",
+                        "payload": "Start business"
+                    },
+                    {
+                        "content_type": "text",
+                        "title": "Improve business",
+                        "payload": "Improve business"
+                    },
+
+                    {
+                        "content_type": "text",
+                        "title": "Implement idea",
+                        "payload": "Implement idea"
+                    }
+                ];
+                fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+            } else if (profexp == '') {
+
+                let replies = [
+                    {
+                        "content_type": "text",
+                        "title": "0-1",
+                        "payload": "0-1"
+                    },
+                    {
+                        "content_type": "text",
+                        "title": "2-3",
+                        "payload": "2-3"
+                    },
+                    {
+                        "content_type": "text",
+                        "title": "3-5",
+                        "payload": "3-5"
+                    },
+                    {
+                        "content_type": "text",
+                        "title": "Over 5",
+                        "payload": "Over 5"
+                    }
+                ];
+                fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+
+            } else if (learningpreference == '') {
+
+              let replies = [
+                  {
+                      "content_type": "text",
+                      "title": "Doing practical tasks",
+                      "payload": "Doing practical tasks"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": "Reading",
+                      "payload": "Reading"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": "Watching Videos",
+                      "payload": "Watching Videos"
+                  },
+              ];
+              fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+            } else if (learningtime == '') {
+
+              let replies = [
+                  {
+                      "content_type": "text",
+                      "title": "0-2",
+                      "payload": "0-2"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": "2-4",
+                      "payload": "2-4"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": "5-8",
+                      "payload": "5-8"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": "9-12",
+                      "payload": "9-12"
+                  },
+              ];
+              fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+            } else if (studies == '') {
+              let replies = [
+                  {
+                      "content_type": "text",
+                      "title": "Humanities",
+                      "payload": "Humanities"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": "STEM",
+                      "payload": "Stem"
+                  }
+              ];
+              fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+            
+            } else if (education == '') {
+              let replies = [
+                  {
+                      "content_type": "text",
+                      "title": "High School",
+                      "payload": "High School"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": "Primary School",
+                      "payload": "Primary School"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": "College",
+                      "payload": "College"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": "University",
+                      "payload": "University"
+                  }
+              ];
+              fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+              
+            } else if (business == '') {
+              let replies = [
+                  {
+                      "content_type": "text",
+                      "title": "Agribusiness",
+                      "payload": "Agribusiness"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": "Technology",
+                      "payload": "Technology"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": "Fashion/beauty",
+                      "payload": "Fashion/beauty"
+                  },
+                  {
+                      "content_type": "text",
+                      "title": "Education",
+                      "payload": "Education"
+                  },
+                  {
+                    "content_type": "text",
+                    "title": "Entertainment",
+                    "payload": "Entertainment"
+                  },
+                  {
+                    "content_type": "text",
+                    "title": "Manufacturing",
+                    "payload": "Manufacturing"
+                  },
+                  {
+                    "content_type": "text",
+                    "title": "Retail",
+                    "payload": "Retail"
+                  },
+                  {
+                    "content_type": "text",
+                    "title": "Hospitality",
+                    "payload": "Hospitality"
+                  },
+                  {
+                    "content_type": "text",
+                    "title": "None of options",
+                    "payload": "None of options"
+                  }
+              ];
+              fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+              
+            }  
+        } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('survey')){
+          // let endgoal = (fbService.isDefined(contexts[0].parameters.fields['end_goal']) && contexts[0].parameters.fields['end_goal']!='') ? contexts[0].parameters.fields['end_goal'].stringValue : '';
+
+
+          let endgoal = (fbService.isDefined(contexts[0].parameters.fields['end_goal'])
+              && contexts[0].parameters.fields['end_goal'] != '') ? contexts[0].parameters.fields['end_goal'].stringValue : '';
+
+          let profexp = (fbService.isDefined(contexts[0].parameters.fields['prof_exp'])
+          && contexts[0].parameters.fields['prof_exp'] != '') ? contexts[0].parameters.fields['prof_exp'].stringValue : '';
+
+          let learningpreference = (fbService.isDefined(contexts[0].parameters.fields['learning_preference'])
+          && contexts[0].parameters.fields['learning_preference'] != '') ? contexts[0].parameters.fields['learning_preference'].stringValue : '';
+
+          let learningtime = (fbService.isDefined(contexts[0].parameters.fields['learning_time'])
+          && contexts[0].parameters.fields['learning_time'] != '') ? contexts[0].parameters.fields['learning_time'].stringValue : '';
+
+          
+          let studies = (fbService.isDefined(contexts[0].parameters.fields['study_area'])
+              && contexts[0].parameters.fields['study_area'] != '') ? contexts[0].parameters.fields['study_area'].stringValue : '';
+
+          let education = (fbService.isDefined(contexts[0].parameters.fields['education_level'])
+              && contexts[0].parameters.fields['education_level'] != '') ? contexts[0].parameters.fields['education_level'].stringValue : '';
+
+          let business = (fbService.isDefined(contexts[0].parameters.fields['business_area'])
+          && contexts[0].parameters.fields['business_area'] != '') ? contexts[0].parameters.fields['business_area'].stringValue : '';
+          
+          if (endgoal != '' && profexp != '' && learningpreference != '' && learningtime != '' && studies != ''  && education != '' && business != '') {
+              // basicSurveyService(endgoal, profexp, learningpreference, learningtime, studies, education);
+              data.basic_survey = {endgoal, profexp, learningpreference, learningtime, studies, education, business};
+              let responseText = "The next questions are of your area of improvement press the button to continue";
+
+              let replies = [
+
+                  {
+                      "content_type": "text",
+                      "title": "Continue",
+                      "payload": "IMPROVEMENT2"
+                  }
+              ];
+
+              fbService.sendQuickReply(sender, responseText, replies);
+
+          }
+
+        }
+
+        break;
     
     case "action.improvement":
         
@@ -902,6 +1144,226 @@ function handleDialogFlowAction(
   
                 fbService.sendQuickReply(sender, responseText, replies);
   
+            }
+    
+        } 
+        
+        break;
+    
+    case "ent.improvement":
+    
+        if (fbService.isDefined(contexts[1]) && contexts[1].name.includes('ent-improvement_dialog_context')){
+
+          let improvement = (fbService.isDefined(contexts[1].parameters.fields['improvement'])
+            && contexts[1].parameters.fields['improvement'] != '') ? contexts[1].parameters.fields['improvement'].stringValue : '';
+
+          let imp_responses = (fbService.isDefined(contexts[1].parameters.fields['imp_responses'])
+            && contexts[1].parameters.fields['imp_responses'] != '') ? contexts[1].parameters.fields['imp_responses'].stringValue : '';
+
+          let improvement2 = (fbService.isDefined(contexts[1].parameters.fields['improvement2'])
+            && contexts[1].parameters.fields['improvement2'] != '') ? contexts[1].parameters.fields['improvement2'].stringValue : '';
+
+          let imp_responses2 = (fbService.isDefined(contexts[1].parameters.fields['imp_responses2'])
+            && contexts[1].parameters.fields['imp_responses2'] != '') ? contexts[1].parameters.fields['imp_responses2'].stringValue : '';
+
+          let improvement3 = (fbService.isDefined(contexts[1].parameters.fields['improvement3'])
+            && contexts[1].parameters.fields['improvement3'] != '') ? contexts[1].parameters.fields['improvement3'].stringValue : '';
+
+          let imp_responses3 = (fbService.isDefined(contexts[1].parameters.fields['imp_responses3'])
+            && contexts[1].parameters.fields['imp_responses3'] != '') ? contexts[1].parameters.fields['imp_responses3'].stringValue : '';
+
+
+          if (improvement == ''){
+            let replies = [
+                {
+                    "content_type": "text",
+                    "title": "Business development",
+                    "payload": "Business development"
+                },
+                {
+                    "content_type": "text",
+                    "title": "Business finances",
+                    "payload": "Business finances"
+                },
+                {
+                    "content_type": "text",
+                    "title": "Sales/marketing",
+                    "payload": "Sales/marketing"
+                },
+                {
+                    "content_type": "text",
+                    "title": "Management",
+                    "payload": "Management"
+                },
+                {
+                  "content_type": "text",
+                  "title": "Fundraising",
+                  "payload": "Fundraising"
+                }
+            ];
+            fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+          } else if (imp_responses == '') {
+            let replies = [
+                {
+                    "content_type": "text",
+                    "title": "Very little",
+                    "payload": "Very little"
+                },
+      
+                {
+                  "content_type": "text",
+                  "title": "Quite a bit",
+                  "payload": "Quite a bit"
+                },
+      
+                {
+                    "content_type": "text",
+                    "title": "Very familiar",
+                    "payload": "Very familiar"
+                },
+                
+            ];
+            fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+          } else if (improvement2 == '') {
+            let replies = [
+              {
+                  "content_type": "text",
+                  "title": "Business development",
+                  "payload": "Business development"
+              },
+              {
+                  "content_type": "text",
+                  "title": "Business finances",
+                  "payload": "Business finances"
+              },
+              {
+                  "content_type": "text",
+                  "title": "Sales/marketing",
+                  "payload": "Sales/marketing"
+              },
+              {
+                  "content_type": "text",
+                  "title": "Management",
+                  "payload": "Management"
+              },
+              {
+                "content_type": "text",
+                "title": "Fundraising",
+                "payload": "Fundraising"
+              }
+          ];
+          fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+          } else if (imp_responses2 == '') {
+            let replies = [
+                {
+                    "content_type": "text",
+                    "title": "Very little",
+                    "payload": "Very little"
+                },
+      
+                {
+                  "content_type": "text",
+                  "title": "Quite a bit",
+                  "payload": "Quite a bit"
+                },
+      
+                {
+                    "content_type": "text",
+                    "title": "Very familiar",
+                    "payload": "Very familiar"
+                },
+                
+            ];
+            fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+          } else if (improvement3 == '') {
+            let replies = [
+              {
+                  "content_type": "text",
+                  "title": "Business development",
+                  "payload": "Business development"
+              },
+              {
+                  "content_type": "text",
+                  "title": "Business finances",
+                  "payload": "Business finances"
+              },
+              {
+                  "content_type": "text",
+                  "title": "Sales/marketing",
+                  "payload": "Sales/marketing"
+              },
+              {
+                  "content_type": "text",
+                  "title": "Management",
+                  "payload": "Management"
+              },
+              {
+                "content_type": "text",
+                "title": "Fundraising",
+                "payload": "Fundraising"
+              }
+          ];
+          fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+          } else if (imp_responses3 == '') {
+            let replies = [
+                {
+                    "content_type": "text",
+                    "title": "Very little",
+                    "payload": "Very little"
+                },
+      
+                {
+                  "content_type": "text",
+                  "title": "Quite a bit",
+                  "payload": "Quite a bit"
+                },
+      
+                {
+                    "content_type": "text",
+                    "title": "Very familiar",
+                    "payload": "Very familiar"
+                },
+                
+            ];
+            fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
+          }
+        } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('improvement')){
+
+            let improvement = (fbService.isDefined(contexts[0].parameters.fields['improvement'])
+                && contexts[0].parameters.fields['improvement'] != '') ? contexts[0].parameters.fields['improvement'].stringValue : '';
+
+            let imp_responses = (fbService.isDefined(contexts[0].parameters.fields['imp_responses'])
+              && contexts[0].parameters.fields['imp_responses'] != '') ? contexts[0].parameters.fields['imp_responses'].stringValue : '';
+
+            let improvement2 = (fbService.isDefined(contexts[0].parameters.fields['improvement2'])
+              && contexts[0].parameters.fields['improvement2'] != '') ? contexts[0].parameters.fields['improvement2'].stringValue : '';
+
+            let imp_responses2 = (fbService.isDefined(contexts[0].parameters.fields['imp_responses2'])
+              && contexts[0].parameters.fields['imp_responses2'] != '') ? contexts[0].parameters.fields['imp_responses2'].stringValue : '';
+      
+            
+            let improvement3 = (fbService.isDefined(contexts[0].parameters.fields['improvement3'])
+                && contexts[0].parameters.fields['improvement3'] != '') ? contexts[0].parameters.fields['improvement3'].stringValue : '';
+
+            let imp_responses3 = (fbService.isDefined(contexts[0].parameters.fields['imp_responses3'])
+                && contexts[0].parameters.fields['imp_responses3'] != '') ? contexts[0].parameters.fields['imp_responses3'].stringValue : '';
+          
+            if (improvement != '' && imp_responses != '' && improvement2 != '' && imp_responses2 != '' && improvement3 != ''  && imp_responses3 != '') {
+                // improvementService(improvement, imp_responses, improvement2, imp_responses2, improvement3, imp_responses3);
+                data.improvements = {improvement, imp_responses, improvement2, imp_responses2, improvement3, imp_responses3};
+                let responseText = "The final questions will be on your learning motivations press the button to continue";
+
+                let replies = [
+
+                    {
+                        "content_type": "text",
+                        "title": "Continue",
+                        "payload": "MOTIVATIONS"
+                    }
+                ];
+
+                fbService.sendQuickReply(sender, responseText, replies);
+
             }
     
         } 
