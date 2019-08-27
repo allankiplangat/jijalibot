@@ -381,7 +381,7 @@ function handleDialogFlowAction(
         } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('jijali-id')){
           let jijali_id = (fbService.isDefined(contexts[0].parameters.fields['jijali_id'])
             && contexts[0].parameters.fields['jijali_id'] != '') ? contexts[0].parameters.fields['jijali_id'].stringValue : '';
-            if (jijali_id != "" &&  jijali_id<= "3000"){
+            if (jijali_id != ""  &&  jijali_id <= "3000"){
               // jijaliIdService(jijali_id)
               data.id = jijali_id;
               let responseText = "You can start the work readiness survey by using the button";
@@ -395,7 +395,7 @@ function handleDialogFlowAction(
               ];
               fbService.sendQuickReply(sender, responseText, replies);
               
-            } else if (jijali_id != "" && jijali_id > "3000"){
+            } else {
                 data.id = jijali_id;
                 let responseText = "You can start the entrepreneurship survey survey by using the button";
 
