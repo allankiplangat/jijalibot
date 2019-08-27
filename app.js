@@ -285,6 +285,14 @@ function handleQuickReply(senderID, quickReply, messageId) {
           "Take the Survey"
         );
         break;
+    case "ENTREPRENEURSHIP":
+      dialogflowService.sendTextQueryToDialogFlow(
+        sessionIds,
+        handleDialogFlowResponse,
+        senderID,
+        "Take the Survey"
+      );
+      break;
     
     case "IMPROVEMENT":
         dialogflowService.sendTextQueryToDialogFlow(
@@ -378,10 +386,22 @@ function handleDialogFlowAction(
               ];
               fbService.sendQuickReply(sender, responseText, replies);
               
+            } else if (jijali_id != "" && jijali_id > "3000"){
+                data.id = jijali_id;
+                let responseText = "You can start the entrepreneurship survey survey by using the button";
+
+                let replies = [
+                  {
+                    content_type: "text",
+                    title: "Entrepreneurship",
+                    payload: "ENTREPRENEURSHIP"
+                  }
+                ];
+                fbService.sendQuickReply(sender, responseText, replies);
             }
         }
       break;
-    
+     
     case "take.survey":
       fbService.handleMessages(messages, sender);
       fbService.sendTypingOn(sender);
@@ -450,6 +470,8 @@ function handleDialogFlowAction(
           
       if (fbService.isDefined(contexts[1]) && contexts[1].name.includes('pre-program-survey_dialog_context')){
 
+          const id = data.id;
+
           let endgoal = (fbService.isDefined(contexts[1].parameters.fields['end_goal'])
               && contexts[1].parameters.fields['end_goal'] != '') ? contexts[1].parameters.fields['end_goal'].stringValue : '';
 
@@ -468,7 +490,7 @@ function handleDialogFlowAction(
           let education = (fbService.isDefined(contexts[1].parameters.fields['education_level'])
           && contexts[1].parameters.fields['education_level'] != '') ? contexts[1].parameters.fields['education_level'].stringValue : '';
           
-          if (endgoal == '') {
+          if (endgoal == '' && data <= '3000') {
               // fbService.handleMessages(messages, sender);
               // let emailContent = "A new app"
               // sendEmail('new job', emailContent)
@@ -612,10 +634,33 @@ function handleDialogFlowAction(
             ];
             fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
             
-          } 
+          } else if (endgoal == '' && data > '3000') {
+            // fbService.handleMessages(messages, sender);
+            // let emailContent = "A new app"
+            // sendEmail('new job', emailContent)
+            let replies = [
+                {
+                    "content_type": "text",
+                    "title": "Start business",
+                    "payload": "Start business"
+                },
+                {
+                    "content_type": "text",
+                    "title": "Improve business",
+                    "payload": "Improve business"
+                },
+
+                {
+                    "content_type": "text",
+                    "title": "Implement idea",
+                    "payload": "Implement idea"
+                }
+            ];
+            fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
         
       } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('survey')){
           // let endgoal = (fbService.isDefined(contexts[0].parameters.fields['end_goal']) && contexts[0].parameters.fields['end_goal']!='') ? contexts[0].parameters.fields['end_goal'].stringValue : '';
+
 
           let endgoal = (fbService.isDefined(contexts[0].parameters.fields['end_goal'])
               && contexts[0].parameters.fields['end_goal'] != '') ? contexts[0].parameters.fields['end_goal'].stringValue : '';
@@ -655,7 +700,7 @@ function handleDialogFlowAction(
           }
   
       } 
-      
+    }
       break;
     
     case "action.improvement":
