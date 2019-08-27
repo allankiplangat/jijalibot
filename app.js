@@ -641,49 +641,49 @@ function handleDialogFlowAction(
             ];
             fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
             
-          } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('survey')){
-          // let endgoal = (fbService.isDefined(contexts[0].parameters.fields['end_goal']) && contexts[0].parameters.fields['end_goal']!='') ? contexts[0].parameters.fields['end_goal'].stringValue : '';
+          } 
+      } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('survey')){
+        // let endgoal = (fbService.isDefined(contexts[0].parameters.fields['end_goal']) && contexts[0].parameters.fields['end_goal']!='') ? contexts[0].parameters.fields['end_goal'].stringValue : '';
 
 
-          let endgoal = (fbService.isDefined(contexts[0].parameters.fields['end_goal'])
-              && contexts[0].parameters.fields['end_goal'] != '') ? contexts[0].parameters.fields['end_goal'].stringValue : '';
+        let endgoal = (fbService.isDefined(contexts[0].parameters.fields['end_goal'])
+            && contexts[0].parameters.fields['end_goal'] != '') ? contexts[0].parameters.fields['end_goal'].stringValue : '';
 
-          let profexp = (fbService.isDefined(contexts[0].parameters.fields['prof_exp'])
-          && contexts[0].parameters.fields['prof_exp'] != '') ? contexts[0].parameters.fields['prof_exp'].stringValue : '';
+        let profexp = (fbService.isDefined(contexts[0].parameters.fields['prof_exp'])
+        && contexts[0].parameters.fields['prof_exp'] != '') ? contexts[0].parameters.fields['prof_exp'].stringValue : '';
 
-          let learningpreference = (fbService.isDefined(contexts[0].parameters.fields['learning_preference'])
-          && contexts[0].parameters.fields['learning_preference'] != '') ? contexts[0].parameters.fields['learning_preference'].stringValue : '';
+        let learningpreference = (fbService.isDefined(contexts[0].parameters.fields['learning_preference'])
+        && contexts[0].parameters.fields['learning_preference'] != '') ? contexts[0].parameters.fields['learning_preference'].stringValue : '';
 
-          let learningtime = (fbService.isDefined(contexts[0].parameters.fields['learning_time'])
-          && contexts[0].parameters.fields['learning_time'] != '') ? contexts[0].parameters.fields['learning_time'].stringValue : '';
-    
-          
-          let studies = (fbService.isDefined(contexts[0].parameters.fields['study_area'])
-              && contexts[0].parameters.fields['study_area'] != '') ? contexts[0].parameters.fields['study_area'].stringValue : '';
-
-          let education = (fbService.isDefined(contexts[0].parameters.fields['education_level'])
-              && contexts[0].parameters.fields['education_level'] != '') ? contexts[0].parameters.fields['education_level'].stringValue : '';
-          
-          if (endgoal != '' && profexp != '' && learningpreference != '' && learningtime != '' && studies != ''  && education != '') {
-              // basicSurveyService(endgoal, profexp, learningpreference, learningtime, studies, education);
-              data.basic_survey = {endgoal, profexp, learningpreference, learningtime, studies, education};
-              let responseText = "The next questions are of your area of improvement press the button to continue";
-
-              let replies = [
-
-                  {
-                      "content_type": "text",
-                      "title": "Continue",
-                      "payload": "IMPROVEMENT"
-                  }
-              ];
-
-              fbService.sendQuickReply(sender, responseText, replies);
-
-          }
+        let learningtime = (fbService.isDefined(contexts[0].parameters.fields['learning_time'])
+        && contexts[0].parameters.fields['learning_time'] != '') ? contexts[0].parameters.fields['learning_time'].stringValue : '';
   
-      } 
-    }
+        
+        let studies = (fbService.isDefined(contexts[0].parameters.fields['study_area'])
+            && contexts[0].parameters.fields['study_area'] != '') ? contexts[0].parameters.fields['study_area'].stringValue : '';
+
+        let education = (fbService.isDefined(contexts[0].parameters.fields['education_level'])
+            && contexts[0].parameters.fields['education_level'] != '') ? contexts[0].parameters.fields['education_level'].stringValue : '';
+        
+        if (endgoal != '' && profexp != '' && learningpreference != '' && learningtime != '' && studies != ''  && education != '') {
+            // basicSurveyService(endgoal, profexp, learningpreference, learningtime, studies, education);
+            data.basic_survey = {endgoal, profexp, learningpreference, learningtime, studies, education};
+            let responseText = "The next questions are of your area of improvement press the button to continue";
+
+            let replies = [
+
+                {
+                    "content_type": "text",
+                    "title": "Continue",
+                    "payload": "IMPROVEMENT"
+                }
+            ];
+
+            fbService.sendQuickReply(sender, responseText, replies);
+
+        }
+
+    } 
       break;
     
 
@@ -896,8 +896,8 @@ function handleDialogFlowAction(
               ];
               fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
               
-            }  
-        } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('survey')){
+            } 
+        } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('entreprenureship')){
           // let endgoal = (fbService.isDefined(contexts[0].parameters.fields['end_goal']) && contexts[0].parameters.fields['end_goal']!='') ? contexts[0].parameters.fields['end_goal'].stringValue : '';
 
 
@@ -1327,7 +1327,7 @@ function handleDialogFlowAction(
             ];
             fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
           }
-        } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('improvement')){
+        } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('ent-improvement')){
 
             let improvement = (fbService.isDefined(contexts[0].parameters.fields['improvement'])
                 && contexts[0].parameters.fields['improvement'] != '') ? contexts[0].parameters.fields['improvement'].stringValue : '';
