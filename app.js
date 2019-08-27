@@ -118,8 +118,6 @@ const sessionClient = new dialogflow.SessionsClient({
 const sessionIds = new Map();
 const usersMap = new Map();
 
-
-const data = {id:{}, basic_survey:{}, improvements:{}, motivations:{}} 
 // Index route
 app.get("/", function(req, res) {
   //res.send('Hello world, I am a chat bot')
@@ -368,6 +366,9 @@ function handleDialogFlowAction(
   contexts,
   parameters
 ) {
+
+  const data = {id:{}, basic_survey:{}, improvements:{}, motivations:{}} 
+
   switch (action) {
 
     case "action.id":
@@ -397,7 +398,7 @@ function handleDialogFlowAction(
               
             } else {
                 data.id = jijali_id;
-                let responseText = "You can start the entrepreneurship survey survey by using the button";
+                let responseText = "You can start the entrepreneurship survey by using the button";
 
                 let replies = [
                   {
@@ -668,7 +669,7 @@ function handleDialogFlowAction(
         if (endgoal != '' && profexp != '' && learningpreference != '' && learningtime != '' && studies != ''  && education != '') {
             // basicSurveyService(endgoal, profexp, learningpreference, learningtime, studies, education);
             data.basic_survey = {endgoal, profexp, learningpreference, learningtime, studies, education};
-            let responseText = "The next questions are of your area of improvement press the button to continue";
+            let responseText = "The next questions are of your area of improvement. Press the button to continue";
 
             let replies = [
 
@@ -1131,7 +1132,7 @@ function handleDialogFlowAction(
             if (improvement != '' && imp_responses != '' && improvement2 != '' && imp_responses2 != '' && improvement3 != ''  && imp_responses3 != '') {
                 // improvementService(improvement, imp_responses, improvement2, imp_responses2, improvement3, imp_responses3);
                 data.improvements = {improvement, imp_responses, improvement2, imp_responses2, improvement3, imp_responses3};
-                let responseText = "The final questions will be on your learning motivations press the button to continue";
+                let responseText = "The final questions will be on your learning motivations. Press the button to continue.";
   
                 let replies = [
   
