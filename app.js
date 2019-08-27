@@ -367,7 +367,7 @@ function handleDialogFlowAction(
   parameters
 ) {
 
-  const data = {id:{}, basic_survey:{}, improvements:{}, motivations:{}} 
+  let data = {id:{}, basic_survey:{}, improvements:{}, motivations:{}} 
 
   switch (action) {
 
