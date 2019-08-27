@@ -397,6 +397,7 @@ function handleDialogFlowAction(
               fbService.sendQuickReply(sender, responseText, replies);
               
             } else {
+                //data.id = jijali_id;
                 data.id = jijali_id;
                 let responseText = "You can start the entrepreneurship survey by using the button";
 

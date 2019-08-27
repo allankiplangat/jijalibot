@@ -8,6 +8,9 @@ pg.defaults.ssl = true;
 module.exports = function({ id, basic_survey, improvements, motivations }) {
   // destructing
   var {
+    id
+  } = id;
+  var {
     endgoal,
     profexp,
     learningpreference,
