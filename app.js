@@ -19,7 +19,7 @@ const userService = require("./services/user-service");
 const weatherService = require("./services/weather-service");
 const jobApplicationService = require("./services/job-application-service");
 const motivationService = require("./services/pre-program-service");
-const jijaliIdService = require("./services/jijali_id");
+const jijaliIdService = require('./services/jijali-id');
 const basicSurveyService = require("./services/basic_survey");
 const improvementService = require("./services/improvement-service");
 const surveyService = require("./services/survey-survey");
@@ -366,7 +366,6 @@ function handleDialogFlowAction(
   contexts,
   parameters
 ) {
-
   switch (action) {
 
     case "action.id":
@@ -672,7 +671,7 @@ function handleDialogFlowAction(
         // && contexts[0].parameters.fields['jijali_id'] != '') ? contexts[0].parameters.fields['jijali_id'].stringValue : '';
         
         if (endgoal != '' && profexp != '' && learningpreference != '' && learningtime != '' && studies != ''  && education != '') {
-            basicSurveyService(endgoal, profexp, learningpreference, learningtime, studies, education, id);
+            basicSurveyService(endgoal, profexp, learningpreference, learningtime, studies, education);
             //data.basic_survey = {endgoal, profexp, learningpreference, learningtime, studies, education};
             let responseText = "The next questions are of your area of improvement. Press the button to continue";
 
@@ -930,8 +929,8 @@ function handleDialogFlowAction(
           && contexts[0].parameters.fields['business_area'] != '') ? contexts[0].parameters.fields['business_area'].stringValue : '';
           
           if (endgoal != '' && profexp != '' && learningpreference != '' && learningtime != '' && studies != ''  && education != '' && business != '') {
-              // basicSurveyService(endgoal, profexp, learningpreference, learningtime, studies, education);
-              data.basic_survey = {endgoal, profexp, learningpreference, learningtime, studies, education, business};
+              basicSurveyService(endgoal, profexp, learningpreference, learningtime, studies, education, business);
+              //data.basic_survey = {endgoal, profexp, learningpreference, learningtime, studies, education, business};
               let responseText = "The next questions are of your area of improvement press the button to continue";
 
               let replies = [
@@ -1135,8 +1134,8 @@ function handleDialogFlowAction(
                 && contexts[0].parameters.fields['imp_responses3'] != '') ? contexts[0].parameters.fields['imp_responses3'].stringValue : '';
           
             if (improvement != '' && imp_responses != '' && improvement2 != '' && imp_responses2 != '' && improvement3 != ''  && imp_responses3 != '') {
-                // improvementService(improvement, imp_responses, improvement2, imp_responses2, improvement3, imp_responses3);
-                data.improvements = {improvement, imp_responses, improvement2, imp_responses2, improvement3, imp_responses3};
+                improvementService(improvement, imp_responses, improvement2, imp_responses2, improvement3, imp_responses3);
+                // data.improvements = {improvement, imp_responses, improvement2, imp_responses2, improvement3, imp_responses3};
                 let responseText = "The final questions will be on your learning motivations. Press the button to continue.";
   
                 let replies = [
@@ -1355,8 +1354,8 @@ function handleDialogFlowAction(
                 && contexts[0].parameters.fields['imp_responses3'] != '') ? contexts[0].parameters.fields['imp_responses3'].stringValue : '';
           
             if (improvement != '' && imp_responses != '' && improvement2 != '' && imp_responses2 != '' && improvement3 != ''  && imp_responses3 != '') {
-                // improvementService(improvement, imp_responses, improvement2, imp_responses2, improvement3, imp_responses3);
-                data.improvements = {improvement, imp_responses, improvement2, imp_responses2, improvement3, imp_responses3};
+                improvementService(improvement, imp_responses, improvement2, imp_responses2, improvement3, imp_responses3);
+                //data.improvements = {improvement, imp_responses, improvement2, imp_responses2, improvement3, imp_responses3};
                 let responseText = "The final questions will be on your learning motivations press the button to continue";
 
                 let replies = [
@@ -1714,7 +1713,7 @@ function handleDialogFlowAction(
               let conv_support_others = Number(support_others);
               let conv_making_progress = Number(making_progress)
 
-              // motivationService(conv_like_minded, conv_proof_myself, conv_accountability, conv_showcase_skills, conv_self_development, conv_lifestyle_improvement, conv_income_growth, conv_support_others, conv_making_progress);
+              motivationService(conv_like_minded, conv_proof_myself, conv_accountability, conv_showcase_skills, conv_self_development, conv_lifestyle_improvement, conv_income_growth, conv_support_others, conv_making_progress);
               data.motivations = {conv_like_minded, conv_proof_myself, conv_accountability, conv_showcase_skills, conv_self_development, conv_lifestyle_improvement, conv_income_growth, conv_support_others, conv_making_progress};
               dataServices(data);
               fbService.handleMessages(messages, sender);
