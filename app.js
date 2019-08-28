@@ -22,6 +22,7 @@ const motivationService = require("./services/pre-program-service");
 const jijaliIdService = require('./services/jijali-id');
 const basicSurveyService = require("./services/basic_survey");
 const improvementService = require("./services/improvement-service");
+const updateIdService = require('./services/jijali-ids-data');
 const surveyService = require("./services/survey-survey");
 let dialogflowService = require("./services/dialogflow-service");
 const fbService = require("./services/fb-service");
@@ -380,10 +381,9 @@ function handleDialogFlowAction(
           let jijali_id = (fbService.isDefined(contexts[0].parameters.fields['jijali_id'])
             && contexts[0].parameters.fields['jijali_id'] != '') ? contexts[0].parameters.fields['jijali_id'].stringValue : '';
 
-            // jijali_id = Number(jijali_id)
             let jijali_id_conv = Number(jijali_id)
             if (jijali_id_conv <= 3000){
-              jijaliIdService(jijali_id_conv)
+              updateIdService.updateId(jijali_id_conv, sender);
               let responseText = "You can start the work readiness survey by using the button";
 
               let replies = [
@@ -396,9 +396,7 @@ function handleDialogFlowAction(
               fbService.sendQuickReply(sender, responseText, replies);
               
             } else {
-                //data.id = jijali_id;
-                //data.id = jijali_id;
-                id = jijali_id_conv;
+                updateIdService.updateId(jijali_id_conv, sender);
                 let responseText = "You can start the entrepreneurship survey by using the button";
 
                 let replies = [
@@ -1713,9 +1711,7 @@ function handleDialogFlowAction(
               let conv_support_others = Number(support_others);
               let conv_making_progress = Number(making_progress)
 
-              motivationService(conv_like_minded, conv_proof_myself, conv_accountability, conv_showcase_skills, conv_self_development, conv_lifestyle_improvement, conv_income_growth, conv_support_others, conv_making_progress);
-              data.motivations = {conv_like_minded, conv_proof_myself, conv_accountability, conv_showcase_skills, conv_self_development, conv_lifestyle_improvement, conv_income_growth, conv_support_others, conv_making_progress};
-              dataServices(data);
+              motivationService(conv_like_minded, conv_proof_myself, conv_accountability, conv_showcase_skills, conv_self_development, conv_lifestyle_improvement, conv_income_growth, conv_support_others, conv_making_progress); 
               fbService.handleMessages(messages, sender);
   
             }
