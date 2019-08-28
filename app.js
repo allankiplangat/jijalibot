@@ -368,7 +368,7 @@ function handleDialogFlowAction(
 ) {
 
   
-  var id;
+  var id = 0;
   // function store(){
   //   data = {id:{}, basic_survey:{}, improvements:{}, motivations:{}};
   // }
