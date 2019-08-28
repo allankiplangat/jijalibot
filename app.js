@@ -19,7 +19,7 @@ const userService = require("./services/user-service");
 const weatherService = require("./services/weather-service");
 const jobApplicationService = require("./services/job-application-service");
 const motivationService = require("./services/pre-program-service");
-const jijaliIdService = require("./services/jijali-id");
+const jijaliIdService = require("./services/jijali_id");
 const basicSurveyService = require("./services/basic_survey");
 const improvementService = require("./services/improvement-service");
 const surveyService = require("./services/survey-survey");
@@ -367,12 +367,6 @@ function handleDialogFlowAction(
   parameters
 ) {
 
-  
-  // let id = 0;
-  // // function store(){
-  // //   data = {id:{}, basic_survey:{}, improvements:{}, motivations:{}};
-  // // }
-
   switch (action) {
 
     case "action.id":
@@ -390,8 +384,7 @@ function handleDialogFlowAction(
             // jijali_id = Number(jijali_id)
             let jijali_id_conv = Number(jijali_id)
             if (jijali_id_conv <= 3000){
-              // jijaliIdService(jijali_id)
-              id = jijali_id_conv;
+              jijaliIdService(jijali_id_conv)
               let responseText = "You can start the work readiness survey by using the button";
 
               let replies = [
@@ -1804,7 +1797,6 @@ function handleDialogFlowResponse(sender, response) {
   let action = response.action;
   let contexts = response.outputContexts;
   let parameters = response.parameters;
-  let id = 0;
 
   fbService.sendTypingOff(sender);
 
