@@ -386,9 +386,9 @@ function handleDialogFlowAction(
         } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('jijali-id')){
           let jijali_id = (fbService.isDefined(contexts[0].parameters.fields['jijali_id'])
             && contexts[0].parameters.fields['jijali_id'] != '') ? contexts[0].parameters.fields['jijali_id'].stringValue : '';
-            
+
             // jijali_id = Number(jijali_id)
-            jijali_id_conv = Number(jijali_id)
+            let jijali_id_conv = Number(jijali_id)
             if (jijali_id_conv != 0  &&  jijali_id_conv <= 3000){
               // jijaliIdService(jijali_id)
               id = jijali_id_conv;
