@@ -383,7 +383,7 @@ function handleDialogFlowAction(
 
             let jijali_id_conv = Number(jijali_id)
             if (jijali_id_conv <= 3000){
-              updateIdService.updateId(jijali_id_conv, sender);
+              updateIdService.updateId(sender, jijali_id_conv);
               let responseText = "You can start the work readiness survey by using the button";
 
               let replies = [
