@@ -368,10 +368,10 @@ function handleDialogFlowAction(
 ) {
 
   
-  let id = 0;
-  // function store(){
-  //   data = {id:{}, basic_survey:{}, improvements:{}, motivations:{}};
-  // }
+  // let id = 0;
+  // // function store(){
+  // //   data = {id:{}, basic_survey:{}, improvements:{}, motivations:{}};
+  // // }
 
   switch (action) {
 
@@ -1804,6 +1804,7 @@ function handleDialogFlowResponse(sender, response) {
   let action = response.action;
   let contexts = response.outputContexts;
   let parameters = response.parameters;
+  let id = 0;
 
   fbService.sendTypingOff(sender);
 
