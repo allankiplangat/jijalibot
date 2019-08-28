@@ -12,6 +12,7 @@ module.exports = function(
   learningtime,
   studies,
   education,
+  jijali_id,
 ) {
   var pool = new pg.Pool(config.PG_CONFIG);
   pool.connect(function(err, client, done) {
@@ -21,15 +22,16 @@ module.exports = function(
 
     client.query(
       "INSERT into basic_survey " +
-        "(end_goal, prof_exp, learning_preference, learning_time, study_area, education_level)" +
-        "VALUES($1, $2, $3, $4, $5, $6) RETURNING id",
+        "(end_goal, prof_exp, learning_preference, learning_time, study_area, education_level,)" +
+        "VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING id",
       [
         endgoal,
         profexp,
         learningpreference,
         learningtime,
         studies,
-        education
+        education,
+        jijali_id
       ],
       function(err, result) {
         if (err) {

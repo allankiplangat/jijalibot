@@ -675,7 +675,7 @@ function handleDialogFlowAction(
         // && contexts[0].parameters.fields['jijali_id'] != '') ? contexts[0].parameters.fields['jijali_id'].stringValue : '';
         
         if (endgoal != '' && profexp != '' && learningpreference != '' && learningtime != '' && studies != ''  && education != '') {
-            basicSurveyService(id, endgoal, profexp, learningpreference, learningtime, studies, education);
+            basicSurveyService(endgoal, profexp, learningpreference, learningtime, studies, education, id);
             //data.basic_survey = {endgoal, profexp, learningpreference, learningtime, studies, education};
             let responseText = "The next questions are of your area of improvement. Press the button to continue";
 
