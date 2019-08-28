@@ -386,10 +386,12 @@ function handleDialogFlowAction(
         } else if (fbService.isDefined(contexts[0]) && contexts[0].name.includes('jijali-id')){
           let jijali_id = (fbService.isDefined(contexts[0].parameters.fields['jijali_id'])
             && contexts[0].parameters.fields['jijali_id'] != '') ? contexts[0].parameters.fields['jijali_id'].stringValue : '';
-            jijali_id = Number(jijali_id)
-            if (jijali_id != 0  &&  jijali_id <= 3000){
+            
+            // jijali_id = Number(jijali_id)
+            jijali_id_conv = Number(jijali_id)
+            if (jijali_id_conv != 0  &&  jijali_id_conv <= 3000){
               // jijaliIdService(jijali_id)
-              id = jijali_id;
+              id = jijali_id_conv;
               let responseText = "You can start the work readiness survey by using the button";
 
               let replies = [
