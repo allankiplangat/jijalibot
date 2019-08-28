@@ -22,7 +22,7 @@ module.exports = function(
 
     client.query(
       "INSERT into basic_survey " +
-        "(end_goal, prof_exp, learning_preference, learning_time, study_area, education_level,)" +
+        "(end_goal, prof_exp, learning_preference, learning_time, study_area, education_level,jijali_id)" +
         "VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING id",
       [
         endgoal,
