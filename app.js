@@ -1715,7 +1715,8 @@ function handleDialogFlowAction(
               let conv_support_others = Number(support_others);
               let conv_making_progress = Number(making_progress)
 
-              motivationService(conv_like_minded, conv_proof_myself, conv_accountability, conv_showcase_skills, conv_self_development, conv_lifestyle_improvement, conv_income_growth, conv_support_others, conv_making_progress); 
+              // motivationService(conv_like_minded, conv_proof_myself, conv_accountability, conv_showcase_skills, conv_self_development, conv_lifestyle_improvement, conv_income_growth, conv_support_others, conv_making_progress);
+              updateIdService.motivation(conv_like_minded,conv_proof_myself,conv_accountability,conv_showcase_skills,conv_self_development,conv_lifestyle_improvement,conv_income_growth,conv_support_others,conv_making_progress)
               fbService.handleMessages(messages, sender);
   
             }

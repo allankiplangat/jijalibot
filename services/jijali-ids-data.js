@@ -103,5 +103,40 @@ module.exports = {
       ]);
     });
     pool.end();
+  },
+
+  motivation: function(
+    like_minded,
+    proof_myself,
+    accountability,
+    showcase_skills,
+    self_development,
+    lifestyle_improvement,
+    income_growth,
+    support_others,
+    making_progress,
+    userId
+  ) {
+    var pool = new pg.Pool(config.PG_CONFIG);
+    pool.connect(function(err, client, done) {
+      if (err) {
+        return console.error("Error acquiring client", err.stack);
+      }
+      let sql =
+        "UPDATE public.users SET like_minded=$1, proof_myself=$2, accountability=$3, showcase_skills=$4, self_development=$5, lifestyle_improvement=$6,income_growth=$7, support_others=$8, making_progress=$9 WHERE fb_id=$10";
+      client.query(sql, [
+        like_minded,
+        proof_myself,
+        accountability,
+        showcase_skills,
+        self_development,
+        lifestyle_improvement,
+        income_growth,
+        support_others,
+        making_progress,
+        userId
+      ]);
+    });
+    pool.end();
   }
 };
