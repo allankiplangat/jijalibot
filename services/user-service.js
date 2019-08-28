@@ -32,7 +32,7 @@ module.exports = {
                     if (result.rows.length === 0) {
                       let sql =
                         "INSERT INTO users (fb_id, first_name, last_name, profile_pic) " +
-                        "VALUES ($1, $2, $3, $4, $5, $6)";
+                        "VALUES ($1, $2, $3, $4)";
                       client.query(sql, [
                         userId,
                         user.first_name,
