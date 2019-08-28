@@ -5,7 +5,7 @@ const pg = require("pg");
 pg.defaults.ssl = true;
 
 module.exports = {
-  updateId: function(jijali_id, userId) {
+  updateId: function(userId, jijali_id) {
     var pool = new pg.Pool(config.PG_CONFIG);
     pool.connect(function(err, client, done) {
       if (err) {
@@ -19,11 +19,11 @@ module.exports = {
         } else {
           let sql;
           if (result.rows.length === 0) {
-            sql = "INSERT INTO public.ids (jijali_id, fb_id) VALUES ($1, $2)";
+            sql = "INSERT INTO ids (fb_id, jijali_id) VALUES ($1, $2)";
           } else {
-            sql = "UPDATE public.ids SET jijali_id=$1 WHERE fb_id=$2";
+            sql = "UPDATE ids SET jijali_id=$1 WHERE fb_id=$2";
           }
-          client.query(sql, [jijali_id, userId]);
+          client.query(sql, [userId, jijali_id]);
         }
       });
 
