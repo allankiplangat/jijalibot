@@ -367,7 +367,11 @@ function handleDialogFlowAction(
   parameters
 ) {
 
-  let data = {id:{}, basic_survey:{}, improvements:{}, motivations:{}} 
+  
+  var id;
+  // function store(){
+  //   data = {id:{}, basic_survey:{}, improvements:{}, motivations:{}};
+  // }
 
   switch (action) {
 
@@ -384,7 +388,7 @@ function handleDialogFlowAction(
             && contexts[0].parameters.fields['jijali_id'] != '') ? contexts[0].parameters.fields['jijali_id'].stringValue : '';
             if (jijali_id != ""  &&  jijali_id <= "3000"){
               // jijaliIdService(jijali_id)
-              data.id = jijali_id;
+              id = jijali_id;
               let responseText = "You can start the work readiness survey by using the button";
 
               let replies = [
@@ -666,10 +670,13 @@ function handleDialogFlowAction(
 
         let education = (fbService.isDefined(contexts[0].parameters.fields['education_level'])
             && contexts[0].parameters.fields['education_level'] != '') ? contexts[0].parameters.fields['education_level'].stringValue : '';
+
+        // let jijali_id = (fbService.isDefined(contexts[0].parameters.fields['jijali_id'])
+        // && contexts[0].parameters.fields['jijali_id'] != '') ? contexts[0].parameters.fields['jijali_id'].stringValue : '';
         
         if (endgoal != '' && profexp != '' && learningpreference != '' && learningtime != '' && studies != ''  && education != '') {
-            // basicSurveyService(endgoal, profexp, learningpreference, learningtime, studies, education);
-            data.basic_survey = {endgoal, profexp, learningpreference, learningtime, studies, education};
+            basicSurveyService(id, endgoal, profexp, learningpreference, learningtime, studies, education);
+            //data.basic_survey = {endgoal, profexp, learningpreference, learningtime, studies, education};
             let responseText = "The next questions are of your area of improvement. Press the button to continue";
 
             let replies = [
