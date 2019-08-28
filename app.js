@@ -405,7 +405,8 @@ function handleDialogFlowAction(
               
             } else {
                 //data.id = jijali_id;
-                data.id = jijali_id;
+                //data.id = jijali_id;
+                id = jijali_id_conv;
                 let responseText = "You can start the entrepreneurship survey by using the button";
 
                 let replies = [
