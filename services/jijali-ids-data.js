@@ -74,5 +74,34 @@ module.exports = {
       ]);
     });
     pool.end();
+  },
+
+  careerImprovement: function(
+    areaof_improvement,
+    areaof_improvement2,
+    areaof_improvement3,
+    area_response,
+    area_response2,
+    area_response3,
+    userId
+  ) {
+    var pool = new pg.Pool(config.PG_CONFIG);
+    pool.connect(function(err, client, done) {
+      if (err) {
+        return console.error("Error acquiring client", err.stack);
+      }
+      let sql =
+        "UPDATE public.users SET areaof_improvement=$1, areaof_improvement2=$2, areaof_improvement3=$3, area_response=$4, area_response2=$5, area_response3=$6 WHERE fb_id=$7";
+      client.query(sql, [
+        areaof_improvement,
+        areaof_improvement2,
+        areaof_improvement3,
+        area_response,
+        area_response2,
+        area_response3,
+        userId
+      ]);
+    });
+    pool.end();
   }
 };
