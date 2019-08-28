@@ -928,8 +928,9 @@ function handleDialogFlowAction(
           && contexts[0].parameters.fields['business_area'] != '') ? contexts[0].parameters.fields['business_area'].stringValue : '';
           
           if (endgoal != '' && profexp != '' && learningpreference != '' && learningtime != '' && studies != ''  && education != '' && business != '') {
-              basicSurveyService(endgoal, profexp, learningpreference, learningtime, studies, education, business);
+              //basicSurveyService(endgoal, profexp, learningpreference, learningtime, studies, education, business);
               //data.basic_survey = {endgoal, profexp, learningpreference, learningtime, studies, education, business};
+              updateIdService.entrepreneurSurvey(endgoal,profexp,learningpreference,learningtime,studies,education,business,sender)
               let responseText = "The next questions are of your area of improvement press the button to continue";
 
               let replies = [

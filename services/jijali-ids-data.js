@@ -43,5 +43,36 @@ module.exports = {
       ]);
     });
     pool.end();
+  },
+
+  entrepreneurSurvey: function(
+    learning_endgoal,
+    prof_exp,
+    learning_preference,
+    learning_time,
+    studies,
+    education,
+    business,
+    userId
+  ) {
+    var pool = new pg.Pool(config.PG_CONFIG);
+    pool.connect(function(err, client, done) {
+      if (err) {
+        return console.error("Error acquiring client", err.stack);
+      }
+      let sql =
+        "UPDATE public.users SET learning_endgoal=$1, prof_exp=$2, learning_preference=$3, learning_time=$4, studies=$5, education=$6, business=$7 WHERE fb_id=$8";
+      client.query(sql, [
+        learning_endgoal,
+        prof_exp,
+        learning_preference,
+        learning_time,
+        studies,
+        education,
+        business,
+        userId
+      ]);
+    });
+    pool.end();
   }
 };
