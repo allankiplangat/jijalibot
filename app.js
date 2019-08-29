@@ -992,8 +992,8 @@ function handleDialogFlowAction(
                 },
                 {
                     "content_type": "text",
-                    "title": " Selecting career",
-                    "payload": " Selecting career"
+                    "title": " Choosing career",
+                    "payload": " Choosing career"
                 }
             ];
             fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
@@ -1038,8 +1038,8 @@ function handleDialogFlowAction(
                 },
                 {
                     "content_type": "text",
-                    "title": " Selecting career",
-                    "payload": " Selecting career"
+                    "title": " Choosing career",
+                    "payload": " Choosing career"
                 }
             ];
             fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
@@ -1084,8 +1084,8 @@ function handleDialogFlowAction(
                 },
                 {
                     "content_type": "text",
-                    "title": " Selecting career",
-                    "payload": " Selecting career"
+                    "title": "Choosing career",
+                    "payload": "Choosing career"
                 }
             ];
             fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
