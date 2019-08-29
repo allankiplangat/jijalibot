@@ -1844,7 +1844,7 @@ async function greetUserText(userId) {
     fbService.sendTextMessage(
       userId,
       "Hi!" +
-        "Welcome to Jijali. I will be guide you through the journey with us." +
+        "Welcome to Jijali. I will be guiding you through the journey with us." +
         "I hope you will enjoy it."
     );
   }
