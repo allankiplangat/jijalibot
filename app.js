@@ -734,8 +734,8 @@ function handleDialogFlowAction(
 
                     {
                         "content_type": "text",
-                        "title": "Implement idea",
-                        "payload": "Implement idea"
+                        "title": "Improve idea",
+                        "payload": "Improve idea"
                     }
                 ];
                 fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
