@@ -115,6 +115,7 @@ module.exports = {
     income_growth,
     support_others,
     making_progress,
+    taking_email,
     userId
   ) {
     var pool = new pg.Pool(config.PG_CONFIG);
@@ -123,7 +124,7 @@ module.exports = {
         return console.error("Error acquiring client", err.stack);
       }
       let sql =
-        "UPDATE public.users SET like_minded=$1, proof_myself=$2, accountability=$3, showcase_skills=$4, self_development=$5, lifestyle_improvement=$6,income_growth=$7, support_others=$8, making_progress=$9 WHERE fb_id=$10";
+        "UPDATE public.users SET like_minded=$1, proof_myself=$2, accountability=$3, showcase_skills=$4, self_development=$5, lifestyle_improvement=$6,income_growth=$7, support_others=$8, making_progress=$9, taking_email=$10 WHERE fb_id=$11";
       client.query(sql, [
         like_minded,
         proof_myself,
@@ -134,6 +135,7 @@ module.exports = {
         income_growth,
         support_others,
         making_progress,
+        taking_email,
         userId
       ]);
     });
