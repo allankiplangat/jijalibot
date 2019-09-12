@@ -1674,7 +1674,7 @@ function handleDialogFlowAction(
                   }
               ];
               fbService.sendQuickReply(sender, messages[0].text.text[0], replies);
-          }else if (taking_email == '') {
+          } else if (taking_email == '') {
             fbService.sendTextMessage(sender, "Enter your email address");
         }
 
@@ -1708,10 +1708,10 @@ function handleDialogFlowAction(
             let making_progress = (fbService.isDefined(contexts[0].parameters.fields['making_progress'])
             && contexts[0].parameters.fields['making_progress'] != '') ? contexts[0].parameters.fields['making_progress'].stringValue : '';
 
-            let take_email = (fbService.isDefined(contexts[0].parameters.fields['take_email'])
-            && contexts[0].parameters.fields['take_email'] != '') ? contexts[0].parameters.fields['take_email'].stringValue : '';
+            let taking_email = (fbService.isDefined(contexts[0].parameters.fields['taking_email'])
+            && contexts[0].parameters.fields['taking_email'] != '') ? contexts[0].parameters.fields['taking_email'].stringValue : '';
           
-            if (like_minded != '' && proof_myself != '' && accountability != '' && showcase_skills != '' && self_development != ''  &&      lifestyle_improvement != '' && income_growth != '' && support_others != '' && making_progress != '' && take_email!= '') {
+            if (like_minded != '' && proof_myself != '' && accountability != '' && showcase_skills != '' && self_development != ''  &&      lifestyle_improvement != '' && income_growth != '' && support_others != '' && making_progress != '' && taking_email!= '') {
 
               let conv_like_minded = Number(like_minded);
               let conv_proof_myself = Number(proof_myself);
@@ -1724,7 +1724,7 @@ function handleDialogFlowAction(
               let conv_making_progress = Number(making_progress)
 
               // motivationService(conv_like_minded, conv_proof_myself, conv_accountability, conv_showcase_skills, conv_self_development, conv_lifestyle_improvement, conv_income_growth, conv_support_others, conv_making_progress);
-              updateIdService.motivation(conv_like_minded,conv_proof_myself,conv_accountability,conv_showcase_skills,conv_self_development,conv_lifestyle_improvement,conv_income_growth,conv_support_others,conv_making_progress, take_email,sender)
+              updateIdService.motivation(conv_like_minded,conv_proof_myself,conv_accountability,conv_showcase_skills,conv_self_development,conv_lifestyle_improvement,conv_income_growth,conv_support_others,conv_making_progress, taking_email,sender)
               fbService.handleMessages(messages, sender);
   
             }
