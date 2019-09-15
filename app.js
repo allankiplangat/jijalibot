@@ -996,6 +996,7 @@ function handleDialogFlowAction(
             // ];
 
             // fbService.sendQuickReply(sender, responseText, replies);
+            fbService.handleMessages(messages, sender);
 
         }
 
