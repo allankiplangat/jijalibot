@@ -140,5 +140,41 @@ module.exports = {
       ]);
     });
     pool.end();
+  },
+  afterclass: function(
+    class_code,
+    class_status,
+    time_on_class,
+    class_impact,
+    video_time,
+    enjoyed_video,
+    reading_time,
+    enjoyed_reading,
+    practical_time,
+    enjoyed_practical,
+    userId
+  ) {
+    var pool = new pg.Pool(config.PG_CONFIG);
+    pool.connect(function(err, client, done) {
+      if (err) {
+        return console.error("Error acquiring client", err.stack);
+      }
+      let sql =
+        "UPDATE public.afterclass SET class_code=$1, class_status=$2, time_on_class=$3, class_impact=$4, video_time=$5, enjoyed_video=$6,reading_time=$7, enjoyed_reading=$8, practical_time=$9, enjoyed_practical=$10 WHERE fb_id=$11";
+      client.query(sql, [
+        class_code,
+        class_status,
+        time_on_class,
+        class_impact,
+        video_time,
+        enjoyed_video,
+        reading_time,
+        enjoyed_reading,
+        practical_time,
+        enjoyed_practical,
+        userId
+      ]);
+    });
+    pool.end();
   }
 };
