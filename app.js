@@ -725,8 +725,7 @@ function handleDialogFlowAction(
           && contexts[1].parameters.fields['enjoyed_practical'] != '') ? contexts[1].parameters.fields['enjoyed_practical'].stringValue : '';
           
           if (class_code == '') {
-            fbService.sendTextMessage(sender, "Enter your email address");
-              
+              fbService.sendTextMessage(sender, "Enter your Class Code to take the survey for.");  
           } else if (class_status == '') {
 
               let replies = [
