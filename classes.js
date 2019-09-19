@@ -42,16 +42,25 @@ module.exports = {
         return console.error("Error acquiring client", err.stack);
       }
       client.query(
-        "SELECT first_name, last_name, phone_number FROM public.mentors WHERE email=$1",
+        "SELECT first_name, last_name, email, phone_number FROM public.mentors WHERE email=$1",
         [email],
         function(err, result) {
           if (err) {
             console.log(err);
             callback("");
           } else {
-            callback(
-              result.rows[0][("first_name", "last_name", "phone_number")]
-            );
+            let mentor = [];
+            for (let i = 0; i < result.rows.length; i++) {
+                mentor.push(result.rows[i]['first_name']);
+                mentor.push(result.rows[i]['last_name']);
+                mentor.push(result.rows[i]['email']);
+                mentor.push(result.rows[i]['phone_number']);
+            }
+            //callback(result.rows[0][("assigned_classes")]);
+            callback(mentor);
+            // callback(
+            //   result.rows[0][("first_name", "last_name", "phone_number")]
+            // );
           }
         }
       );
