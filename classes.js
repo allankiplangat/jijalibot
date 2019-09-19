@@ -19,7 +19,8 @@ module.exports = {
             console.log(err);
             callback("");
           } else {
-            callback(result.rows[0]["assigned_classes"]);
+            callback(result.rows);
+            //[0]["assigned_classes"]
           }
         }
       );
