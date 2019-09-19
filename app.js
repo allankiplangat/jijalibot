@@ -390,15 +390,15 @@ function handleDialogFlowAction(
             let last_name = showMentor[1]
             let mail = showMentor[2]
             let phone_number = showMentor[3]
-          let reply = `Now, let me introduce your mentor: ${first_name}, ${last_name}. Their e-mail is: ${mail} and their phone number is${phone_number}. Your mentor will be there to provide you feedback regarding your learning progress, and support whever you need.`
+          let reply = `Now, let me introduce your mentor: ${first_name}, ${last_name}. Their e-mail is: ${mail} and their phone number is${phone_number}. Your mentor will be there to provide you feedback regarding your learning progress, and support whever you need.  It is important that you get back to me every time you finish a class or after a call with your mentor. I will have a few questions to get your feedback and make sure we make your experience even better. You can initiative the cocnversation using the buttons below, or the menu button. I hope to hear from you soon, and enjoy your learning.`
 
-          let reply1 = 'It is important that you get back to me every time you finish a class or after a call with your mentor. I will have a few questions to get your feedback and make sure we make your experience even better. You can initiative the cocnversation using the buttons below, or the menu button.'
+          // let reply1 = 'It is important that you get back to me every time you finish a class or after a call with your mentor. I will have a few questions to get your feedback and make sure we make your experience even better. You can initiative the cocnversation using the buttons below, or the menu button.'
 
-          let reply2 = 'I hope to hear from you soon, and enjoy your learning.'
+          // let reply2 = 'I hope to hear from you soon, and enjoy your learning.'
 
           fbService.sendTextMessage(sender, reply)
-          fbService.sendTextMessage(sender, reply1)
-          fbService.sendTextMessage(sender, reply2)
+          // fbService.sendTextMessage(sender, reply1)
+          // fbService.sendTextMessage(sender, reply2)
           }, email)
 
         }, sender);
