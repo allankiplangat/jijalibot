@@ -32,6 +32,7 @@ const passport = require("passport");
 const FacebookStrategy = require("passport-facebook").Strategy;
 const session = require("express-session");
 const CheckCredentials = require("./functions/checkcredentials");
+const classes = require('./classes');
 
 CheckCredentials();
 
@@ -368,6 +369,17 @@ function handleDialogFlowAction(
   parameters
 ) {
   switch (action) {
+    case "action.showclass":
+        classes.readClass(function(allClasses){
+          let reply;
+          if (allClasses!=""){
+            reply = `Here is summary of your unique customized course that was designed based on your pre-program survey responses: ${allClasses}`
+          } else {
+            reply = `Complete the survey first`
+          }
+          fbService.sendTextMessage(sender, reply)
+        }, sender);
+      break;
 
     case "action.id":
         if (fbService.isDefined(contexts[1]) && contexts[1].name.includes('jijali-id_dialog_context')){
