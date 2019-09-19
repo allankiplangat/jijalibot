@@ -19,7 +19,7 @@ module.exports = {
             console.log(err);
             callback("");
           } else {
-            callback(result.rows);
+            callback(result.rows['assigned_classes']);
             //[0]["assigned_classes"]
           }
         }
