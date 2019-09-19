@@ -372,12 +372,35 @@ function handleDialogFlowAction(
     case "action.showclass":
         classes.readClass(function(allClasses){
           let reply;
+          let responseText;
+          let replies;
           if (allClasses!=""){
-            reply = `Here is summary of your unique customized course that was designed based on your pre-program survey responses: ${allClasses}`
+            reply = `Congratulations on starting your learning with Jijali!, Here is summary of your unique customized course that was designed based on your pre-program survey responses: ${allClasses}, You can access your course at our platrom: jijali.com. You should sign up, and have your account activated by the Jijali team. In case you have problems accessing your Classes, contact us through the button in the menu.`
+
+            responseText = "Your mentor will be there to provide you feedback regarding your learning progress, and support whever you need.";
+
+            replies = [
+              {
+                content_type: "text",
+                title: "Show my mentor",
+                payload: "SHOW_MENTOR"
+              }
+            ]
+
           } else {
-            reply = `Complete the survey first`
+            reply = `Complete the survey first  then you will be assigned a class after 12 hours`
+            responseText = "Use the button to start over the survey";
+
+            replies = [
+              {
+                content_type: "text",
+                title: "Complete survey",
+                payload: "START_OVER"
+              }
+            ]
           }
           fbService.sendTextMessage(sender, reply)
+          fbService.sendQuickReply(sender, responseText, replies);
         }, sender);
       break;
 
