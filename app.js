@@ -394,7 +394,7 @@ function handleDialogFlowAction(
 
           let reply1 = 'It is important that you get back to me every time you finish a class or after a call with your mentor. I will have a few questions to get your feedback and make sure we make your experience even better. You can initiative the cocnversation using the buttons below, or the menu button.'
 
-          reply2 = 'I hope to hear from you soon, and enjoy your learning.'
+          let reply2 = 'I hope to hear from you soon, and enjoy your learning.'
 
           fbService.sendTextMessage(sender, reply)
           fbService.sendTextMessage(sender, reply1)
