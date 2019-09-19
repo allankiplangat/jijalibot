@@ -277,6 +277,15 @@ function handleQuickReply(senderID, quickReply, messageId) {
         "Enter your jijali id number"
       );
       break;
+    case "SHOW_MENTOR":
+        dialogflowService.sendTextQueryToDialogFlow(
+          sessionIds,
+          handleDialogFlowResponse,
+          senderID,
+          "show me my classes"
+        );
+        break;
+
     case "WORK_READINESS":
         dialogflowService.sendTextQueryToDialogFlow(
           sessionIds,
@@ -285,6 +294,7 @@ function handleQuickReply(senderID, quickReply, messageId) {
           "Take the Survey"
         );
         break;
+        
     case "ENTREPRENEURSHIP":
       dialogflowService.sendTextQueryToDialogFlow(
         sessionIds,
