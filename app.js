@@ -383,6 +383,7 @@ function handleDialogFlowAction(
     case "action.showmentor":
         classes.readClass(function(allClasses){
           let email = allClasses[1]
+          console.log(email)
           classes.readMentor(function(showMentor){
             let first_name = [showMentor[0]]
             let last_name = [showMentor[1]]
