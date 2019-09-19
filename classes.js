@@ -19,7 +19,7 @@ module.exports = {
             console.log(err);
             callback("");
           } else {
-            callback(result.rows[0][("assigned_classes", "mentor_email")]);
+            callback(result.rows[("assigned_classes", "mentor_email")]);
             //[0]["assigned_classes"]
           }
         }
