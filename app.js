@@ -385,11 +385,11 @@ function handleDialogFlowAction(
           let email = allClasses[1]
           //console.log(email)
           classes.readMentor(function(showMentor){
-            let first_name = [showMentor[0]]
-            console.log(first_name)
-            let last_name = [showMentor[1]]
-            let mail = [showMentor[2]]
-            let phone_number = [showMentor[3]]
+            let first_name = showMentor[0]
+            //console.log(first_name)
+            let last_name = showMentor[1]
+            let mail = showMentor[2]
+            let phone_number = showMentor[3]
           let reply = `Now, let me introduce your mentor: ${first_name, last_name}. Their e-mail is: ${mail} and their phone number is${phone_number}. Your mentor will be there to provide you feedback regarding your learning progress, and support whever you need.`
           fbService.sendTextMessage(sender, reply)
           }, email)
