@@ -421,6 +421,8 @@ function handleDialogFlowAction(
                 payload: "SHOW_MENTOR"
               }
             ]
+            fbService.sendTextMessage(sender, reply);
+            fbService.sendQuickReply(sender, responseText, replies);
 
           } else {
             reply = `Complete the survey first  then you will be assigned a class after 12 hours`
@@ -433,9 +435,9 @@ function handleDialogFlowAction(
                 payload: "START_OVER"
               }
             ]
+            fbService.sendTextMessage(sender, reply);
+            fbService.sendQuickReply(sender, responseText, replies);
           }
-          fbService.sendTextMessage(sender, reply);
-          fbService.sendQuickReply(sender, responseText, replies);
         }, sender);
       break;
 
