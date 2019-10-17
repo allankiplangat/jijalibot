@@ -410,7 +410,7 @@ function handleDialogFlowAction(
           let responseText;
           let replies;
           if (allClasses!=""){
-            reply = `Congratulations on starting your learning with Jijali!, Here is summary of your unique customized course that was designed based on your pre-program survey responses: ${allClasses[0]}, You can access your course at our platrom: jijali.com. You should sign up, and have your account activated by the Jijali team. In case you have problems accessing your Classes, contact us through the button in the menu.`
+            reply = `Congratulations on starting your learning with Jijali!, Here is summary of your unique customized course that was designed based on your pre-program survey responses: ${allClasses[0]}, You can access your course at our platform: jijali.com. You should sign up, and have your account activated by the Jijali team. In case you have problems accessing your Classes, contact us through the button in the menu.`
 
             responseText = "Your mentor will be there to provide you feedback regarding your learning progress, and support whever you need.";
 
@@ -434,7 +434,7 @@ function handleDialogFlowAction(
               }
             ]
           }
-          fbService.sendTextMessage(sender, reply)
+          fbService.sendTextMessage(sender, reply);
           fbService.sendQuickReply(sender, responseText, replies);
         }, sender);
       break;
