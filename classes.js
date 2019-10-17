@@ -12,7 +12,7 @@ module.exports = {
         return console.error("Error acquiring client", err.stack);
       }
       client.query(
-        "SELECT assigned_classes, mentor_email FROM public.assigned WHERE fb_id=$1",
+        "SELECT klass_name, mentor_name FROM public.assigned WHERE fb_id=$1",
         [userId],
         function(err, result) {
           if (err) {
