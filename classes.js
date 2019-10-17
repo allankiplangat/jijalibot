@@ -35,15 +35,15 @@ module.exports = {
     pool.end();
   },
 
-  readMentor: function(callback, email) {
+  readMentor: function(callback, username) {
     var pool = new pg.Pool(config.PG_CONFIG);
     pool.connect(function(err, client, done) {
       if (err) {
         return console.error("Error acquiring client", err.stack);
       }
       client.query(
-        "SELECT first_name, last_name, email, phone_number FROM public.mentors WHERE email=$1",
-        [email],
+        "SELECT username, email, phone_number FROM public.mentors WHERE username=$1",
+        [username],
         function(err, result) {
           if (err) {
             console.log(err);
@@ -51,8 +51,7 @@ module.exports = {
           } else {
             let mentor = [];
             for (let i = 0; i < result.rows.length; i++) {
-                mentor.push(result.rows[i]['first_name']);
-                mentor.push(result.rows[i]['last_name']);
+                mentor.push(result.rows[i]['username']);
                 mentor.push(result.rows[i]['email']);
                 mentor.push(result.rows[i]['phone_number']);
             }

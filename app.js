@@ -382,15 +382,15 @@ function handleDialogFlowAction(
 
     case "action.showmentor":
         classes.readClass(function(allClasses){
-          let email = allClasses[1]
-          //console.log(email)
+          let username = allClasses[1]
+          //console.log(username)
           classes.readMentor(function(showMentor){
-            let first_name = showMentor[0]
+            // let first_name = showMentor[0]
             //console.log(first_name)
-            let last_name = showMentor[1]
+            let user_name = showMentor[1]
             let mail = showMentor[2]
             let phone_number = showMentor[3]
-          let reply = `Now, let me introduce your mentor: ${first_name}, ${last_name}. Their e-mail is: ${mail} and their phone number is${phone_number}. Your mentor will be there to provide you feedback regarding your learning progress, and support whever you need.  It is important that you get back to me every time you finish a class or after a call with your mentor. I will have a few questions to get your feedback and make sure we make your experience even better. You can initiative the cocnversation using the buttons below, or the menu button. I hope to hear from you soon, and enjoy your learning.`
+          let reply = `Now, let me introduce your mentor: ${user_name}, Their e-mail is: ${mail} and their phone number is${phone_number}. Your mentor will be there to provide you feedback regarding your learning progress, and support whever you need.  It is important that you get back to me every time you finish a class or after a call with your mentor. I will have a few questions to get your feedback and make sure we make your experience even better. You can initiate the cocnversation using the buttons below, or the menu button. I hope to hear from you soon, and enjoy your learning.`
 
           // let reply1 = 'It is important that you get back to me every time you finish a class or after a call with your mentor. I will have a few questions to get your feedback and make sure we make your experience even better. You can initiative the cocnversation using the buttons below, or the menu button.'
 
@@ -399,7 +399,7 @@ function handleDialogFlowAction(
           fbService.sendTextMessage(sender, reply)
           // fbService.sendTextMessage(sender, reply1)
           // fbService.sendTextMessage(sender, reply2)
-          }, email)
+          }, username)
 
         }, sender);
       break;
@@ -425,8 +425,8 @@ function handleDialogFlowAction(
             fbService.sendQuickReply(sender, responseText, replies);
 
           } else {
-            reply = `Complete the survey first  then you will be assigned a class after 12 hours`
-            responseText = "Use the button to start over the survey";
+            reply = `You have not been assigned a class yet, contact Jijali on the menu for more information`
+            responseText = "Use the button to start over the survey if you did not complete";
 
             replies = [
               {
