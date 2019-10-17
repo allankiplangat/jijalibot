@@ -422,7 +422,8 @@ function handleDialogFlowAction(
               }
             ]
             fbService.sendTextMessage(sender, reply);
-            fbService.sendQuickReply(sender, responseText, replies);
+            setTimeout(function(){ fbService.sendQuickReply(sender, responseText, replies); }, 3000);
+            
 
           } else {
             reply = `You have not been assigned a class yet, contact Jijali on the menu for more information`
