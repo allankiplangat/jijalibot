@@ -21,8 +21,8 @@ module.exports = {
           } else {
             let data = [];
             for (let i = 0; i < result.rows.length; i++) {
-                data.push(result.rows[i]['assigned_classes']);
-                data.push(result.rows[i]['mentor_email']);
+                data.push(result.rows[i]['klass_name']);
+                data.push(result.rows[i]['mentor_name']);
             }
             //callback(result.rows[0][("assigned_classes")]);
             callback(data);
