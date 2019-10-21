@@ -286,6 +286,15 @@ function handleQuickReply(senderID, quickReply, messageId) {
         );
         break;
 
+    case "AFTER_CLASS":
+        dialogflowService.sendTextQueryToDialogFlow(
+          sessionIds,
+          handleDialogFlowResponse,
+          senderID,
+          "After every class is done"
+        );
+        break;
+
     case "WORK_READINESS":
         dialogflowService.sendTextQueryToDialogFlow(
           sessionIds,
@@ -792,14 +801,40 @@ function handleDialogFlowAction(
           let making_progress = userDetails[22]
           let taking_email = userDetails[23]
 
-          if (jijali_id <= 3000){
-            if(learning_endgoal=== null || prof_exp=== null || learning_preference=== null || learning_time=== null || studies === null || education === null || business === null || areaof_improvement === null || areaof_improvement2 === null || areaof_improvement3 === null || area_response === null || area_response2 === null || area_response3 === null || like_minded === null || proof_myself === null || accountability === null || showcase_skills === null || self_development === null || lifestyle_improvement === null || income_growth === null || support_others === null || making_progress === null || taking_email === null){
-              console.log('Redo survey please')
+          if (jijali_id <= 3000 || null){
+            if(learning_endgoal=== null || prof_exp=== null || learning_preference=== null || learning_time=== null || studies === null || education === null ||  areaof_improvement === null || areaof_improvement2 === null || areaof_improvement3 === null || area_response === null || area_response2 === null || area_response3 === null || like_minded === null || proof_myself === null || accountability === null || showcase_skills === null || self_development === null || lifestyle_improvement === null || income_growth === null || support_others === null || making_progress === null){
+              let responseText = " Sorry you did not fill the survey correctly, You will need to start over again. Please be attentive and do not leave the chat till you complete the survey. It will take around 5 minutes of your time.";
+
+              let replies = [
+                {
+                  content_type: "text",
+                  title: "Retake the survey",
+                  payload: "RETAKE"
+                }
+              ];
+              fbService.sendQuickReply(sender, responseText, replies);
             } else {
               console.log('You are good to go')
               
             } 
-          };
+          } else {
+            if(learning_endgoal=== null || prof_exp=== null || learning_preference=== null || learning_time=== null || studies === null || education === null || business === null || areaof_improvement === null || areaof_improvement2 === null || areaof_improvement3 === null || area_response === null || area_response2 === null || area_response3 === null || like_minded === null || proof_myself === null || accountability === null || showcase_skills === null || self_development === null || lifestyle_improvement === null || income_growth === null || support_others === null || making_progress === null){
+              let responseText = " Sorry you did not fill the survey correctly, You will need to start over again. Please be attentive and do not leave the chat till you complete the survey. It will take around 5 minutes of your time.";
+
+              let replies = [
+                {
+                  content_type: "text",
+                  title: "Retake the survey",
+                  payload: "RETAKE"
+                }
+              ];
+              fbService.sendQuickReply(sender, responseText, replies);
+            } else {
+              console.log('You are good to go')
+              
+            }
+
+          }
         }, sender )
           
       break;
