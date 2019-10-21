@@ -765,14 +765,44 @@ function handleDialogFlowAction(
 
     case "afterclass.survey":
         classes.readUser(function(userDetails){
-          let details = userDetails
-          console.log(details)
-        }, sender);
-      break;
+          //let userdetails = userDetails
+          // console.log(userdetails)
+          let jijali_id = userDetails[0]
+          let learning_endgoal = userDetails[1]
+          let prof_exp = userDetails[2]
+          let learning_preference = userDetails[3]
+          let learning_time = userDetails[4]
+          let studies = userDetails[5]
+          let education = userDetails[6]
+          let business = userDetails[7]
+          let areaof_improvement = userDetails[8]
+          let areaof_improvement2 = userDetails[9]
+          let areaof_improvement3 = userDetails[10]
+          let area_response = userDetails[11]
+          let area_response2 = userDetails[12]
+          let area_response3 = userDetails[13]
+          let like_minded = userDetails[14]
+          let proof_myself = userDetails[15]
+          let accountability = userDetails[16]
+          let showcase_skills = userDetails[17]
+          let self_development = userDetails[18]
+          let lifestyle_improvement = userDetails[19]
+          let income_growth = userDetails[20]
+          let support_others = userDetails[21]
+          let making_progress = userDetails[22]
+          let taking_email = userDetails[23]
 
-       
-      
-    
+          if (jijali_id <= 3000){
+            if(learning_endgoal=== null || prof_exp=== null || learning_preference=== null || learning_time=== null || studies === null || education === null || business === null || areaof_improvement === null || areaof_improvement2 === null || areaof_improvement3 === null || area_response === null || area_response2 === null || area_response3 === null || like_minded === null || proof_myself === null || accountability === null || showcase_skills === null || self_development === null || lifestyle_improvement === null || income_growth === null || support_others === null || making_progress === null || taking_email === null){
+              console.log('Redo survey please')
+            } else {
+              console.log('You are good to go')
+              
+            } 
+          };
+        }, sender )
+          
+      break;
 
     case "entrepreneur.basic":
         
