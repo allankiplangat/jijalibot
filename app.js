@@ -816,8 +816,8 @@ function handleDialogFlowAction(
             } else {
               classes.readClass(function(resultClasses){
                 let class_name = resultClasses[0]
-                console.log(class_name.split(','))
-                class_name.forEach(function (item) {
+                let split_class = class_name.split(',')
+                split_class.forEach(function (item) {
                   console.log(item);
                 });
                   
