@@ -117,5 +117,34 @@ module.exports = {
       );
     });
     pool.end();
-  }
+  },
+
+  readCode: function(callback, name) {
+    var pool = new pg.Pool(config.PG_CONFIG);
+    pool.connect(function(err, client, done) {
+      if (err) {
+        return console.error("Error acquiring client", err.stack);
+      }
+      client.query(
+        "SELECT code FROM public.klasses WHERE name=$1",
+        [name],
+        function(err, result) {
+          if (err) {
+            console.log(err);
+            callback("");
+          } else {
+            let data = [];
+            for (let i = 0; i < result.rows.length; i++) {
+              data.push(result.rows[i]["code"]);
+            }
+            //callback(result.rows[0][("assigned_classes")]);
+            callback(data);
+            //result.rows[0][("mentor_email")]
+            //[0]["assigned_classes"]
+          }
+        }
+      );
+    });
+    pool.end();
+  },
 };

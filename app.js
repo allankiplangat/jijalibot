@@ -814,6 +814,11 @@ function handleDialogFlowAction(
               ];
               fbService.sendQuickReply(sender, responseText, replies);
             } else {
+              classes.readClass(function(resultClasses){
+                let class_name = resultClasses[0]
+                console.log(class_name)
+                  
+              }, sender)
               if (fbService.isDefined(contexts[1]) && contexts[1].name.includes('after_class_survey_dialog_context')){
 
                 let class_code = (fbService.isDefined(contexts[1].parameters.fields['class_code'])
@@ -847,6 +852,11 @@ function handleDialogFlowAction(
                 && contexts[1].parameters.fields['enjoyed_practical'] != '') ? contexts[1].parameters.fields['enjoyed_practical'].stringValue : '';
                 
                 if (class_code == '') {
+                  
+                    classes.readCode(function(classCode){
+                        let code = classCode[0]
+                    }, class_name)
+
                     fbService.sendTextMessage(sender, "Enter your Class Code to take the survey for.");  
                 } else if (class_status == '') {
             
