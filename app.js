@@ -819,7 +819,7 @@ function handleDialogFlowAction(
                 let split_class = class_name.split(',')
                 split_class.forEach(function (item) {
                   classes.readCode(function(classCode){
-                    let code = classCode
+                    let code = classCode[0]
                     console.log(code)
                 }, item)
                 });
