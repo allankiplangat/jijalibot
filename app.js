@@ -815,8 +815,8 @@ function handleDialogFlowAction(
               fbService.sendQuickReply(sender, responseText, replies);
             } else {
               classes.readClass(function(resultClasses){
-                let name = resultClasses
-                console.log(name)
+                let class_name = resultClasses[0]
+                console.log(class_name)
                   
               }, sender)
               if (fbService.isDefined(contexts[1]) && contexts[1].name.includes('after_class_survey_dialog_context')){
