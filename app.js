@@ -816,7 +816,7 @@ function handleDialogFlowAction(
             } else {
               classes.readClass(function(resultClasses){
                 let class_name = resultClasses[0]
-                console.log(class_name)
+                console.log(class_name.split(','))
                   
               }, sender)
               if (fbService.isDefined(contexts[1]) && contexts[1].name.includes('after_class_survey_dialog_context')){
