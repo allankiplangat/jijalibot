@@ -814,17 +814,6 @@ function handleDialogFlowAction(
               ];
               fbService.sendQuickReply(sender, responseText, replies);
             } else {
-              classes.readClass(function(resultClasses){
-                let class_name = resultClasses[0]
-                let split_class = class_name.split(',')
-                split_class.forEach(function (item) {
-                  classes.readCode(function(classCode){
-                    let code = classCode[0]
-                    console.log(code)
-                }, item)
-                });
-                  
-              }, sender)
               if (fbService.isDefined(contexts[1]) && contexts[1].name.includes('after_class_survey_dialog_context')){
 
                 let class_code = (fbService.isDefined(contexts[1].parameters.fields['class_code'])
@@ -858,12 +847,18 @@ function handleDialogFlowAction(
                 && contexts[1].parameters.fields['enjoyed_practical'] != '') ? contexts[1].parameters.fields['enjoyed_practical'].stringValue : '';
                 
                 if (class_code == '') {
-                  
-                    // classes.readCode(function(classCode){
-                    //     let code = classCode[0]
-                    // }, class_name)
-
-                    fbService.sendTextMessage(sender, "Enter your Class Code to take the survey for.");  
+                    fbService.sendTextMessage(sender, "Hello! Please type in the code of the Class you have completed. I am inserting the list below to help you. ");
+                    classes.readClass(function(resultClasses){
+                      let class_name = resultClasses[0]
+                      let split_class = class_name.split(',')
+                      split_class.forEach(function (item) {
+                        classes.readCode(function(classCode){
+                          let code = classCode[0]
+                          fbService.sendTextMessage(sender, code);
+                      }, item)
+                      });
+                        
+                    }, sender)   
                 } else if (class_status == '') {
             
                     let replies = [

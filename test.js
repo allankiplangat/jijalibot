@@ -3,8 +3,8 @@ classes.readCode(function(classCode){
 }, class_name)
 
 result_two.forEach(function (item) {
-    console.log(item);
-    });
+console.log(item);
+});
 
 
 
