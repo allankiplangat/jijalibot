@@ -2,6 +2,10 @@ classes.readCode(function(classCode){
     let code = classCode[0]
 }, class_name)
 
+result_two.forEach(function (item) {
+    console.log(item);
+    });
+
 
 
 
