@@ -2470,7 +2470,7 @@ function receivedPostback(event) {
           
                   fbService.sendButtonMessage(
                     senderID,
-                    "",
+                    "text",
                     buttons
                   );
                 }, 3000);
