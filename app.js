@@ -853,9 +853,9 @@ function handleDialogFlowAction(
                 
                 if (class_code == '') {
                   
-                    classes.readCode(function(classCode){
-                        let code = classCode[0]
-                    }, class_name)
+                    // classes.readCode(function(classCode){
+                    //     let code = classCode[0]
+                    // }, class_name)
 
                     fbService.sendTextMessage(sender, "Enter your Class Code to take the survey for.");  
                 } else if (class_status == '') {
