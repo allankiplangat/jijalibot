@@ -853,7 +853,7 @@ function handleDialogFlowAction(
                       let split_class = class_name.split(',')
                       split_class.forEach(function (item) {
                         classes.readCode(function(classCode){
-                          let code = classCode[0] + resultClasses[0]
+                          let code = classCode[0]
                           fbService.sendTextMessage(sender, code);
                       }, item)
                       });
